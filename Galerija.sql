@@ -62,6 +62,24 @@ values
 ('Kopacki Rit','45.36 N 18.47 E'),
 ('Vis','43.2 N 16.9 E');
 
+insert into slika (naslov,datum,album,lokacija)
+values 
+('slika1','2020-03-12',1,1),
+('slika2','2022-02-14',3,2),
+('slika3','2021-06-03',2,3),
+('slika4','2022-12-04',2,2),
+('slika5','2023-04-21',1,1),
+('slika6','2023-05-18',3,3);
+
+insert into komentar (sadrzaj,slika,datum)
+values 
+('komentar 1',1,'2020-03-13'),
+('komentar 2',2,'2022-02-16'),
+('komentar 3',3,'2021-06-05'),
+('komentar 4',4,'2022-12-04'),
+('komentar 5',5,'2023-04-22'),
+('komentar 6',6,'2023-05-19');
+
 insert into tag (naziv)
 values 
 ('zena'),
@@ -73,27 +91,6 @@ values
 ('galaksija'),
 ('zvijezde'),
 ('mjesec');
-
-insert into slika (naslov,datum,album,lokacija)
-values 
-('slika1','2020-03-12',1,1),
-('slika2','2022-02-14',3,2),
-('slika3','2021-06-03',2,3),
-('slika4','2022-12-04',2,2),
-('slika5','2023-04-21',1,1),
-('slika6','2023-05-18',3,3);
-
-
-
-insert into komentar (sadrzaj,slika,datum)
-values 
-('komentar 1',1,'2020-03-13'),
-('komentar 2',2,'2022-02-16'),
-('komentar 3',3,'2021-06-05'),
-('komentar 4',4,'2022-12-04'),
-('komentar 5',5,'2023-04-22'),
-('komentar 6',6,'2023-05-19');
-
 
 insert into tag_slika (tag,slika)
 values 
