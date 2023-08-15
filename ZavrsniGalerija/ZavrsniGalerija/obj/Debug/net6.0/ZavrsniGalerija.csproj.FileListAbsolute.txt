@@ -1,0 +1,15 @@
+C:\Users\Ivan\Documents\GitHub\Zavrsni-Galerija\ZavrsniGalerija\ZavrsniGalerija\obj\Debug\net6.0\ZavrsniGalerija.csproj.AssemblyReference.cache
+C:\Users\Ivan\Documents\GitHub\Zavrsni-Galerija\ZavrsniGalerija\ZavrsniGalerija\obj\Debug\net6.0\ZavrsniGalerija.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ivan\Documents\GitHub\Zavrsni-Galerija\ZavrsniGalerija\ZavrsniGalerija\obj\Debug\net6.0\ZavrsniGalerija.AssemblyInfoInputs.cache
+C:\Users\Ivan\Documents\GitHub\Zavrsni-Galerija\ZavrsniGalerija\ZavrsniGalerija\obj\Debug\net6.0\ZavrsniGalerija.AssemblyInfo.cs
+C:\Users\Ivan\Documents\GitHub\Zavrsni-Galerija\ZavrsniGalerija\ZavrsniGalerija\obj\Debug\net6.0\ZavrsniGalerija.csproj.CoreCompileInputs.cache
+C:\Users\Ivan\Documents\GitHub\Zavrsni-Galerija\ZavrsniGalerija\ZavrsniGalerija\bin\Debug\net6.0\ZavrsniGalerija.exe
+C:\Users\Ivan\Documents\GitHub\Zavrsni-Galerija\ZavrsniGalerija\ZavrsniGalerija\bin\Debug\net6.0\ZavrsniGalerija.deps.json
+C:\Users\Ivan\Documents\GitHub\Zavrsni-Galerija\ZavrsniGalerija\ZavrsniGalerija\bin\Debug\net6.0\ZavrsniGalerija.runtimeconfig.json
+C:\Users\Ivan\Documents\GitHub\Zavrsni-Galerija\ZavrsniGalerija\ZavrsniGalerija\bin\Debug\net6.0\ZavrsniGalerija.dll
+C:\Users\Ivan\Documents\GitHub\Zavrsni-Galerija\ZavrsniGalerija\ZavrsniGalerija\bin\Debug\net6.0\ZavrsniGalerija.pdb
+C:\Users\Ivan\Documents\GitHub\Zavrsni-Galerija\ZavrsniGalerija\ZavrsniGalerija\obj\Debug\net6.0\ZavrsniGalerija.dll
+C:\Users\Ivan\Documents\GitHub\Zavrsni-Galerija\ZavrsniGalerija\ZavrsniGalerija\obj\Debug\net6.0\refint\ZavrsniGalerija.dll
+C:\Users\Ivan\Documents\GitHub\Zavrsni-Galerija\ZavrsniGalerija\ZavrsniGalerija\obj\Debug\net6.0\ZavrsniGalerija.pdb
+C:\Users\Ivan\Documents\GitHub\Zavrsni-Galerija\ZavrsniGalerija\ZavrsniGalerija\obj\Debug\net6.0\ZavrsniGalerija.genruntimeconfig.cache
+C:\Users\Ivan\Documents\GitHub\Zavrsni-Galerija\ZavrsniGalerija\ZavrsniGalerija\obj\Debug\net6.0\ref\ZavrsniGalerija.dll
