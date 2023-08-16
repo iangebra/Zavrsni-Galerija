@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -32,5 +33,45 @@ namespace ZavrsniGalerija
             }
         }
 
+        internal static int ucitajCijeliBroj(string poruka, string greska)
+        {
+            int b;
+            while (true)
+            {
+                Console.WriteLine(poruka);
+                try
+                {
+                    b = int.Parse(Console.ReadLine());
+                    if (b > 0)
+                    {
+                        return b;
+                    }
+                    Console.WriteLine(greska);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(greska);
+
+                }
+
+
+            }
+        }
+
+        internal static string UcitajString(string poruka, string greska)
+        {
+            string s = "";
+            while(true)
+            {
+                Console.WriteLine(poruka);
+                s = Console.ReadLine();
+                if(s!=null && s.Trim().Length>0)
+                { 
+                    return s;
+                }
+                Console.WriteLine(greska);
+            }
+        }
     }
 }
+

@@ -8,6 +8,7 @@ namespace ZavrsniGalerija
 {
     internal class Tag : Entitet
     {
-        public string naziv { get; set; }     
+        public string naziv { get; set; }
+       
     }
 }

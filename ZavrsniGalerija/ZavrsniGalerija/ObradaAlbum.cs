@@ -15,6 +15,7 @@ namespace ZavrsniGalerija
         public ObradaAlbum()
         { 
             Albumi = new List<Album>();
+            TestniPodaci();
             
 
         }
@@ -30,11 +31,12 @@ namespace ZavrsniGalerija
                 "Odabir mora biti 1-5", 1, 5))
             {
                 case 1:
-                    
+
+                    PrikaziAlbume();
                     PrikaziIzbornik();
                     break;
                 case 2:
-                   
+                    UnosNovogAlbuma();
                     PrikaziIzbornik();
                     break;
                 case 3:
@@ -49,6 +51,28 @@ namespace ZavrsniGalerija
                     Console.WriteLine("Gotov rad s albumima");
                     break;
             }
+        }
+
+        private void UnosNovogAlbuma()
+        {
+            var s = new Album();
+            s.sifra = Pomocno.ucitajCijeliBroj("unesite sifru albuma", "unos mora biti pozitivan cijeli broj");
+            s.naziv = Pomocno.UcitajString("Unesite naziv albuma", "Unos obavezan");
+            s.opis = Pomocno.UcitajString("Unesite opis albuma", "Unos obavezan");
+            Albumi.Add(s);
+        }
+
+        private void PrikaziAlbume()
+        {
+            foreach(Album album in Albumi)
+            {
+                Console.WriteLine(album.naziv);
+            }
+        }
+        private void TestniPodaci()
+        {
+            Albumi.Add(new Album { naziv="Portreti" });
+            Albumi.Add(new Album { naziv = "Landscape" });
         }
     }
 }
