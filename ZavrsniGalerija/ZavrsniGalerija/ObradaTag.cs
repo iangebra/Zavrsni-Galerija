@@ -12,6 +12,20 @@ namespace ZavrsniGalerija
         public ObradaTag()
         {
             Tags= new List<Tag>();
+            TestniPodaci();
+        }
+
+        private void TestniPodaci()
+        {
+            Tags.Add(new Tag
+            {
+                naziv = "priroda"
+            });
+            Tags.Add(new Tag
+            {
+                naziv = "portret"
+            });
+
         }
 
         public void PrikaziIzbornik()
@@ -41,9 +55,10 @@ namespace ZavrsniGalerija
 
         private void PregledTagova()
         {
+            int b = 1;
             foreach(Tag tag in Tags)
             {
-                Console.WriteLine(tag.naziv); 
+                Console.WriteLine("\t{0}. {1}",b++,tag.naziv); 
             }
         }
 

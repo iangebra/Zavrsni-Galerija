@@ -72,6 +72,24 @@ namespace ZavrsniGalerija
                 Console.WriteLine(greska);
             }
         }
+
+        internal static DateTime ucitajDatum(string v1, string v2)
+        {
+            while (true)
+            {
+                try
+                {
+                    Console.WriteLine(v1);
+                    return DateTime.Parse(Console.ReadLine());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(v2);
+                }
+
+            }
+        }
     }
 }
+
 

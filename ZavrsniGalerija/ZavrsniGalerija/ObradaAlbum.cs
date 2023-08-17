@@ -15,8 +15,10 @@ namespace ZavrsniGalerija
         public ObradaAlbum()
         { 
             Albumi = new List<Album>();
-            TestniPodaci();
-            
+            if (Pomocno.dev)
+            {
+                TestniPodaci();
+            }
 
         }
         public void PrikaziIzbornik()
@@ -40,17 +42,43 @@ namespace ZavrsniGalerija
                     PrikaziIzbornik();
                     break;
                 case 3:
-                    
+                    PromjenaAlbuma();
                     PrikaziIzbornik();
                     break;
                 case 4:
-                    
+                    if (Albumi.Count == 0)
+                    {
+                        Console.WriteLine("Nema albuma za brisanje");
+                    }
+                    else
+                    {
+                        BrisanjeAlbuma();
+                    }
                     PrikaziIzbornik();
                     break;
                 case 5:
                     Console.WriteLine("Gotov rad s albumima");
                     break;
             }
+        }
+
+        private void BrisanjeAlbuma()
+        {
+            PrikaziAlbume();
+            int broj = Pomocno.ucitajBrojRaspon("Odaberi redni broj smjera za brisanje: ", "Nije dobro", 1, Albumi.Count());
+           Albumi.RemoveAt(broj-1);
+        }
+
+        private void PromjenaAlbuma()
+        {
+            PrikaziAlbume();
+            int broj = Pomocno.ucitajBrojRaspon("Odaberi redni broj smjera za promjenu: ","Nije dobro", 1, Albumi.Count());
+            var s = Albumi[broj-1];
+            s.sifra = Pomocno.ucitajCijeliBroj("unesite sifru albuma (" + s.sifra + "): ", "unos mora biti pozitivan cijeli broj");
+            s.naziv = Pomocno.UcitajString("Unesite naziv albuma (" + s.naziv + "): ", "Unos obavezan");
+            s.opis = Pomocno.UcitajString("Unesite opis albuma (" + s.opis + "): ", "Unos obavezan");
+
+
         }
 
         private void UnosNovogAlbuma()
@@ -62,12 +90,17 @@ namespace ZavrsniGalerija
             Albumi.Add(s);
         }
 
-        private void PrikaziAlbume()
+        public void PrikaziAlbume()
         {
+            Console.WriteLine();
+            Console.WriteLine("---------Albumi---------");
+            Console.WriteLine("------------------------");
+            int b = 1;
             foreach(Album album in Albumi)
             {
-                Console.WriteLine(album.naziv);
+                Console.WriteLine("\t{0}. {1}", b++,album.naziv);
             }
+            Console.WriteLine("------------------------");
         }
         private void TestniPodaci()
         {

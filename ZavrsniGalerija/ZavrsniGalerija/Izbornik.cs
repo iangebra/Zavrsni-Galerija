@@ -8,12 +8,14 @@ namespace ZavrsniGalerija
 {
     internal class Izbornik
     {
-        private ObradaAlbum ObradaAlbum;
+        public ObradaAlbum ObradaAlbum { get; }
         private ObradaTag ObradaTag;
+        private ObradaSlika ObradaSlika;
         public Izbornik()
         {
             ObradaAlbum = new ObradaAlbum();
             ObradaTag = new ObradaTag();
+            ObradaSlika = new ObradaSlika(this);
             PozdravnaPoruka();
             PrikaziIzbornik();
 
@@ -42,11 +44,10 @@ namespace ZavrsniGalerija
             {
                 case 1:
                     ObradaAlbum.PrikaziIzbornik();
-                    Console.WriteLine("albumi");
                     PrikaziIzbornik();
                     break;
                 case 2:
-                    Console.WriteLine("slike");
+                    ObradaSlika.PrikaziIzbornik();
                     PrikaziIzbornik();
                     break;
                 case 3:
