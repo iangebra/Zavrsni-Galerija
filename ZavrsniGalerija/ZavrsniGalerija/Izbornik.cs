@@ -9,7 +9,7 @@ namespace ZavrsniGalerija
     internal class Izbornik
     {
         public ObradaAlbum ObradaAlbum { get; }
-        private ObradaTag ObradaTag;
+        public ObradaTag ObradaTag { get; }
         private ObradaSlika ObradaSlika;
         public Izbornik()
         {

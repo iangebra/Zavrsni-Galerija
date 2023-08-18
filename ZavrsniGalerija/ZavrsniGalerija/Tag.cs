@@ -9,6 +9,9 @@ namespace ZavrsniGalerija
     internal class Tag : Entitet
     {
         public string naziv { get; set; }
-       
+        public override string ToString()
+        {
+            return naziv;
+        }
     }
 }

@@ -65,7 +65,7 @@ namespace ZavrsniGalerija
         private void BrisanjeAlbuma()
         {
             PrikaziAlbume();
-            int broj = Pomocno.ucitajBrojRaspon("Odaberi redni broj smjera za brisanje: ", "Nije dobro", 1, Albumi.Count());
+            int broj = Pomocno.ucitajBrojRaspon("Odaberi redni broj albuma za brisanje: ", "Nije dobro", 1, Albumi.Count());
            Albumi.RemoveAt(broj-1);
         }
 

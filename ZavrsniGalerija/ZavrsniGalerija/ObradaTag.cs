@@ -47,18 +47,50 @@ namespace ZavrsniGalerija
                     UcitajTag();
                     PrikaziIzbornik();
                     break;
+                case 3:
+                    PromjenaTaga();
+                    PrikaziIzbornik();
+                    break;
+                case 4:
+                    if (Tags.Count == 0)
+                    {
+                        Console.WriteLine("Nema taga za brisanje");
+                    }
+                    else
+                    {
+                        BrisanjeTagova();
+                    }
+                    PrikaziIzbornik();
+                    break;
                 case 5:
                     Console.WriteLine("Gotov rad s tagovima");
                     break;
             }
         }
 
-        private void PregledTagova()
+        private void BrisanjeTagova()
+        {
+            PregledTagova();
+            int broj = Pomocno.ucitajBrojRaspon("Odaberi redni broj taga za brisanje: ", "Nije dobro", 1, Tags.Count());
+            Tags.RemoveAt(broj - 1);
+        }
+
+        private void PromjenaTaga()
+        {
+
+            PregledTagova();
+            int broj = Pomocno.ucitajBrojRaspon("Odaberi redni broj smjera za promjenu: ", "Nije dobro", 1, Tags.Count());
+            var s = Tags[broj - 1];
+            s.sifra = Pomocno.ucitajCijeliBroj("unesite sifru taga (" + s.sifra + "): ", "unos mora biti pozitivan cijeli broj");
+            s.naziv = Pomocno.UcitajString("Unesite naziv albuma (" + s.naziv + "): ", "Unos obavezan");
+        }
+
+        public void PregledTagova()
         {
             int b = 1;
             foreach(Tag tag in Tags)
             {
-                Console.WriteLine("\t{0}. {1}",b++,tag.naziv); 
+                Console.WriteLine("\t{0}. {1}",b++,tag); 
             }
         }
 
