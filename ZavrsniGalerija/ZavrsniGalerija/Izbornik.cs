@@ -11,11 +11,14 @@ namespace ZavrsniGalerija
         public ObradaAlbum ObradaAlbum { get; }
         public ObradaTag ObradaTag { get; }
         private ObradaSlika ObradaSlika;
+        public ObradaLokacija ObradaLokacija { get; }
         public Izbornik()
         {
             ObradaAlbum = new ObradaAlbum();
             ObradaTag = new ObradaTag();
             ObradaSlika = new ObradaSlika(this);
+            ObradaLokacija = new ObradaLokacija();
+
             PozdravnaPoruka();
             PrikaziIzbornik();
 
@@ -55,6 +58,7 @@ namespace ZavrsniGalerija
                     PrikaziIzbornik();
                     break;
                 case 4:
+                    ObradaLokacija.PrikaziIzbornik();
                     Console.WriteLine("lokacije");
                     PrikaziIzbornik();
                     break;

@@ -67,7 +67,7 @@ namespace ZavrsniGalerija
             int b = 1;
             foreach (Slika slika in Slike)
             {
-                Console.WriteLine("\t {0}. {1} ({2})",b++, slika.naslov, slika.album.naziv);
+                Console.WriteLine("\t {0}. {1} ({2}) {3}",b++, slika.naslov, slika.album.naziv, slika.lokacija.naziv);
                 foreach(Tag tag in slika.tagovi)
                 {
                     Console.WriteLine("\t\t{0}",tag);
@@ -83,6 +83,7 @@ namespace ZavrsniGalerija
             sl.album = UcitajAlbum();
             sl.datum = Pomocno.ucitajDatum("Unesi datum slike u formatu dd.MM.yyyy.", "Greška");
             sl.tagovi = UcitajTagove();
+            sl.lokacija = UcitajLokaciju();
             Slike.Add(sl);
         }
 
@@ -108,6 +109,14 @@ namespace ZavrsniGalerija
             Izbornik.ObradaAlbum.PrikaziAlbume();
             int broj = Pomocno.ucitajBrojRaspon("Odaberi redni broj albuma za promjenu: ", "Nije dobro", 1, Izbornik.ObradaAlbum.Albumi.Count());
             return Izbornik.ObradaAlbum.Albumi[broj - 1];
+        }
+
+
+        private Lokacija UcitajLokaciju()
+        {
+            Izbornik.ObradaLokacija.PrikaziLokacije();
+            int broj = Pomocno.ucitajBrojRaspon("Odaberi redni broj lokacije za promjenu: ", "Nije dobro", 1, Izbornik.ObradaLokacija.Lokacije.Count());
+            return Izbornik.ObradaLokacija.Lokacije[broj - 1];
         }
     }
 }
