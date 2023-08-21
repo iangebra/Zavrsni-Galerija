@@ -15,7 +15,7 @@ namespace ZavrsniGalerija
         {
             Slike = new List<Slika>();
         }
-        public ObradaSlika(Izbornik izbornik):this()
+        public ObradaSlika(Izbornik izbornik) : this()
         {
             this.Izbornik = izbornik;
         }
@@ -67,10 +67,10 @@ namespace ZavrsniGalerija
             int b = 1;
             foreach (Slika slika in Slike)
             {
-                Console.WriteLine("\t {0}. {1} ({2}) {3}",b++, slika.naslov, slika.album.naziv, slika.lokacija.naziv);
-                foreach(Tag tag in slika.tagovi)
+                Console.WriteLine("\t {0}. {1} ({2}) {3}", b++, slika.naslov, slika.album.naziv, slika.lokacija.naziv);
+                foreach (Tag tag in slika.tagovi)
                 {
-                    Console.WriteLine("\t\t{0}",tag);
+                    Console.WriteLine("\t\t{0}", tag);
                 }
             }
         }
@@ -90,7 +90,7 @@ namespace ZavrsniGalerija
         private List<Tag> UcitajTagove()
         {
             List<Tag> tags = new List<Tag>();
-            while(Pomocno.ucitajCijeliBroj("1 za dodavanje taga","Greska") == 1)
+            while (Pomocno.ucitajCijeliBroj("1 za dodavanje taga", "Greska") == 1)
             {
                 tags.Add(UcitajTag());
             }
