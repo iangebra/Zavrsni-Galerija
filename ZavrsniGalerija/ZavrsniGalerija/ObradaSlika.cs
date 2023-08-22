@@ -10,10 +10,15 @@ namespace ZavrsniGalerija
     {
         public List<Slika> Slike;
         private Izbornik Izbornik;
+
+
+        
+
         public ObradaSlika()
 
         {
             Slike = new List<Slika>();
+            
         }
         public ObradaSlika(Izbornik izbornik) : this()
         {
@@ -25,9 +30,10 @@ namespace ZavrsniGalerija
             Console.WriteLine("1. Pregled postojećih slika");
             Console.WriteLine("2. Unos nove slike");
             Console.WriteLine("3. Brisanje slike");
-            Console.WriteLine("4. Povratak na glavni izbornik");
+            Console.WriteLine("4. Dodaj komentar");
+            Console.WriteLine("5. Povratak na glavni izbornik");
             switch (Pomocno.ucitajBrojRaspon("Odaberite stavku izbornika smjera: ",
-                "Odabir mora biti 1-4", 1, 4))
+                "Odabir mora biti 1-5", 1, 5))
             {
                 case 1:
                     PrikaziSlike();
@@ -48,12 +54,30 @@ namespace ZavrsniGalerija
                     }
                     PrikaziIzbornik();
                     break;
-
                 case 4:
+                    DodajKomentar();
+                    PrikaziIzbornik();
+                    break;
+
+                case 5:
                     Console.WriteLine("Gotov rad sa slikama");
                     break;
             }
         }
+
+        private void DodajKomentar()
+        {
+            Console.WriteLine("Odaberi redni broj slike za komentiranje");
+            PrikaziSlike();            
+            int broj = Pomocno.ucitajBrojRaspon("Broj slike:  ", "Nije dobro", 1, Slike.Count());            
+            Console.WriteLine("Upisi komentar");
+           
+            string komentar = Console.ReadLine();
+            SpremljeniKomentari.Add(komentar); 
+            
+        }
+        private static List<string> SpremljeniKomentari = new List<string>(); 
+
 
         private void BrisanjeSlika()
         {
@@ -72,13 +96,19 @@ namespace ZavrsniGalerija
                 {
                     Console.WriteLine("\t\t{0}", tag);
                 }
+                
+                foreach (string str in SpremljeniKomentari)
+                {
+                    Console.WriteLine(str); 
+                }
+
             }
         }
 
         private void UnosNoveSlike()
         {
             var sl = new Slika();
-            sl.sifra = Pomocno.ucitajCijeliBroj("unesite sifru slike", "unos mora biti pozitivan cijeli broj");
+            sl.sifra = Pomocno.ucitajCijeliBroj("Unesite sifru slike", "unos mora biti pozitivan cijeli broj");
             sl.naslov = Pomocno.UcitajString("Unesite naziv slike", "Unos obavezan");
             sl.album = UcitajAlbum();
             sl.datum = Pomocno.ucitajDatum("Unesi datum slike u formatu dd.MM.yyyy.", "Greška");
@@ -107,7 +137,7 @@ namespace ZavrsniGalerija
         private Album UcitajAlbum()
         {
             Izbornik.ObradaAlbum.PrikaziAlbume();
-            int broj = Pomocno.ucitajBrojRaspon("Odaberi redni broj albuma za promjenu: ", "Nije dobro", 1, Izbornik.ObradaAlbum.Albumi.Count());
+            int broj = Pomocno.ucitajBrojRaspon("Odaberi redni broj albuma za dodavanje ", "Nije dobro", 1, Izbornik.ObradaAlbum.Albumi.Count());
             return Izbornik.ObradaAlbum.Albumi[broj - 1];
         }
 
@@ -115,7 +145,7 @@ namespace ZavrsniGalerija
         private Lokacija UcitajLokaciju()
         {
             Izbornik.ObradaLokacija.PrikaziLokacije();
-            int broj = Pomocno.ucitajBrojRaspon("Odaberi redni broj lokacije za promjenu: ", "Nije dobro", 1, Izbornik.ObradaLokacija.Lokacije.Count());
+            int broj = Pomocno.ucitajBrojRaspon("Odaberi redni broj lokacije za dodavanje ", "Nije dobro", 1, Izbornik.ObradaLokacija.Lokacije.Count());
             return Izbornik.ObradaLokacija.Lokacije[broj - 1];
         }
     }
