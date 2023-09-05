@@ -1,3 +1,7 @@
+using GalerijaWebApi.Data;
+using Microsoft.EntityFrameworkCore;
+using GalerijaWebApi.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,18 +11,34 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+builder.Services.AddDbContext<GalerijaContext>(o =>
+    o.UseSqlServer(
+        builder.Configuration.
+        GetConnectionString(name: "GalerijaContext")
+        )
+    );
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwagger(opcije =>
+    {
+        opcije.SerializeAsV2 = true;
+    });
+    app.UseSwaggerUI(opcije =>
+    {
+        opcije.ConfigObject.
+        AdditionalItems.Add("requestSnippetsEnabled", true);
+    });
 }
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
+
 
 app.MapControllers();
 
