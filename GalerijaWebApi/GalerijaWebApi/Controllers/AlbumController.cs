@@ -38,8 +38,36 @@ namespace GalerijaWebApi.Controllers
         [Route("{sifra:int}")]
         public IActionResult Put(int sifra, Album Album)
         {
-            // promjena u bazi
-            return StatusCode(StatusCodes.Status200OK, Album);
+
+            if (sifra <= 0 || Album == null)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                var AlbumBaza = _context.album.Find(sifra);
+                if (AlbumBaza == null)
+                {
+                    return BadRequest();
+                }
+               
+                AlbumBaza.naslov = Album.naslov;
+                AlbumBaza.opis = Album.opis;
+                
+
+                _context.album.Update(AlbumBaza);
+                _context.SaveChanges();
+
+                return StatusCode(StatusCodes.Status200OK, AlbumBaza);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable,
+                                  ex); 
+            }
+
         }
 
         [HttpDelete]
