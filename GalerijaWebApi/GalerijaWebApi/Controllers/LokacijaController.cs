@@ -20,17 +20,51 @@ namespace GalerijaWebApi.Controllers
         public IActionResult Get()
         {
 
-            return new JsonResult(_context.lokacija.ToList());
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                var lokacije = _context.lokacija.ToList();
+                if (lokacije == null || lokacije.Count == 0)
+                {
+                    return new EmptyResult();
+                }
+                return new JsonResult(_context.lokacija.ToList());
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable,
+                                    ex.Message);
+            }
+
+
+
         }
 
         [HttpPost]
-        public IActionResult Post(Lokacija Lokacija)
+        public IActionResult Post(Lokacija lokacija)
         {
-            _context.lokacija.Add(Lokacija);
-            _context.SaveChanges();
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-            // dodavanje u bazu
-            return Created("/api/v1/Lokacija", Lokacija); // 201
+            try
+            {
+                _context.lokacija.Add(lokacija);
+                _context.SaveChanges();
+                return StatusCode(StatusCodes.Status201Created, lokacija);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable,
+                                   ex.Message);
+            }
+
+
+
         }
 
 
@@ -75,10 +109,33 @@ namespace GalerijaWebApi.Controllers
         [Produces("application/json")]
         public IActionResult Delete(int sifra)
         {
-            // Brisanje u bazi
-            return StatusCode(StatusCodes.Status200OK, "{\"obrisano\":true}");
-        }
+            if (sifra <= 0)
+            {
+                return BadRequest();
+            }
 
-       
+            var LokacijaBaza = _context.lokacija.Find(sifra);
+            if (LokacijaBaza == null)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                _context.lokacija.Remove(LokacijaBaza);
+                _context.SaveChanges();
+
+                return new JsonResult("{\"poruka\":\"Obrisano\"}");
+
+            }
+            catch (Exception ex)
+            {
+
+                return new JsonResult("{\"poruka\":\"Ne može se obrisati\"}");
+
+            }
+
+
+        }
     }
 }

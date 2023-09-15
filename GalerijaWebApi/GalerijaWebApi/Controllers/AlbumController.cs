@@ -19,18 +19,52 @@ namespace GalerijaWebApi.Controllers
         [HttpGet]
         public IActionResult Get()
         {
+           
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                var albumi = _context.album.ToList();
+                if (albumi == null || albumi.Count == 0)
+                {
+                    return new EmptyResult();
+                }
+                return new JsonResult(_context.album.ToList());
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable,
+                                    ex.Message);
+            }
 
-            return new JsonResult(_context.album.ToList());
+
+
         }
 
-        [HttpPost]        
-        public IActionResult Post(Album Album)
+        [HttpPost]
+        public IActionResult Post(Album album)
         {
-            _context.album.Add(Album);
-            _context.SaveChanges();
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-            // dodavanje u bazu
-            return Created("/api/v1/Album", Album); // 201
+            try
+            {
+                _context.album.Add(album);
+                _context.SaveChanges();
+                return StatusCode(StatusCodes.Status201Created, album);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable,
+                                   ex.Message);
+            }
+
+
+
         }
 
 
@@ -51,10 +85,10 @@ namespace GalerijaWebApi.Controllers
                 {
                     return BadRequest();
                 }
-               
+
                 AlbumBaza.naslov = Album.naslov;
                 AlbumBaza.opis = Album.opis;
-                
+
 
                 _context.album.Update(AlbumBaza);
                 _context.SaveChanges();
@@ -65,7 +99,7 @@ namespace GalerijaWebApi.Controllers
             catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status503ServiceUnavailable,
-                                  ex); 
+                                  ex);
             }
 
         }
@@ -75,8 +109,31 @@ namespace GalerijaWebApi.Controllers
         [Produces("application/json")]
         public IActionResult Delete(int sifra)
         {
-            // Brisanje u bazi
-            return StatusCode(StatusCodes.Status200OK, "{\"obrisano\":true}");
+            if (sifra <= 0)
+            {
+                return BadRequest();
+            }
+
+            var AlbumBaza = _context.album.Find(sifra);
+            if (AlbumBaza == null)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                _context.album.Remove(AlbumBaza);
+                _context.SaveChanges();
+
+                return new JsonResult("{\"poruka\":\"Obrisano\"}");
+
+            }
+            catch (Exception ex)
+            {
+
+                return new JsonResult("{\"poruka\":\"Ne može se obrisati\"}");
+
+            }
         }
     }
 }

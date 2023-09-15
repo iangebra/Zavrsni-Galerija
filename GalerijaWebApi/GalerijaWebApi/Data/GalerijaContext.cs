@@ -1,5 +1,6 @@
 ﻿using GalerijaWebApi.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Text.RegularExpressions;
 
 namespace GalerijaWebApi.Data
 {
@@ -11,8 +12,26 @@ namespace GalerijaWebApi.Data
         }
 
         public DbSet<Album> album { get; set; }
+        public DbSet<Lokacija> lokacija { get; set; }
+        public DbSet<Slika> Slika { get; set; }
+        public DbSet<Tag> Tag { get; set; }
+        protected override void OnModelCreating(
+           ModelBuilder modelBuilder)
+        {
+            // implementacija veze 1:n
+            modelBuilder.Entity<Slika>().HasOne(g => g.Album);
+
+            // implementacjia veze n:n
+            modelBuilder.Entity<Slika>()
+                .HasMany(g => g.Tags)
+                .WithMany(p => p.Slike)
+                .UsingEntity<Dictionary<string, object>>("tag_slika",
+                c => c.HasOne<Tag>().WithMany().HasForeignKey("tag"),
+                c => c.HasOne<Slika>().WithMany().HasForeignKey("slika"),
+                c => c.ToTable("tag_slika")
+                );
+        }
+
     }
-
-
 }
 
