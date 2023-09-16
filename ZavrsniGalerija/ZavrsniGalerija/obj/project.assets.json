@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Ivan\\.nuget\\packages\\": {}
+    "C:\\Users\\Polaznik\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\ZavrsniGalerija\\ZavrsniGalerija\\ZavrsniGalerija.csproj",
+      "projectUniqueName": "C:\\Users\\Polaznik\\Documents\\Github\\Zavrsni-Galerija\\ZavrsniGalerija\\ZavrsniGalerija\\ZavrsniGalerija.csproj",
       "projectName": "ZavrsniGalerija",
-      "projectPath": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\ZavrsniGalerija\\ZavrsniGalerija\\ZavrsniGalerija.csproj",
-      "packagesPath": "C:\\Users\\Ivan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\ZavrsniGalerija\\ZavrsniGalerija\\obj\\",
+      "projectPath": "C:\\Users\\Polaznik\\Documents\\Github\\Zavrsni-Galerija\\ZavrsniGalerija\\ZavrsniGalerija\\ZavrsniGalerija.csproj",
+      "packagesPath": "C:\\Users\\Polaznik\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Polaznik\\Documents\\Github\\Zavrsni-Galerija\\ZavrsniGalerija\\ZavrsniGalerija\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Ivan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Polaznik\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -61,7 +61,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }

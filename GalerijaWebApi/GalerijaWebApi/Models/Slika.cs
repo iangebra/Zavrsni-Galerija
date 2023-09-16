@@ -9,8 +9,9 @@ namespace GalerijaWebApi.Models
         [ForeignKey("album")]
         public Album? Album { get; set; }
         [ForeignKey("lokacija")]
-        public Lokacija? Lokacija { get; set;}
+        public Lokacija? Lokacija { get; set; }
         public List<Tag> Tags { get; set; } = new();
         public List<Komentar> Komentar { get; set; } = new();
     }
 }
+

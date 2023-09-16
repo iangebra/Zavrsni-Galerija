@@ -6,14 +6,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GalerijaWebApi.Controllers
 {
-   
+
     [ApiController]
     [Route("api/v1/[controller]")]
     public class SlikaController : ControllerBase
     {
         private readonly GalerijaContext _context;
         private readonly ILogger<SlikaController> _logger;
-      
+
         /// <param name="context"></param>
         public SlikaController(GalerijaContext context,
             ILogger<SlikaController> logger)
@@ -25,7 +25,6 @@ namespace GalerijaWebApi.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            _logger.LogInformation("Dohvaćam grupe");
 
             if (!ModelState.IsValid)
             {
@@ -37,6 +36,8 @@ namespace GalerijaWebApi.Controllers
                 var slike = _context.Slika
                     .Include(g => g.Album)
                     .Include(g => g.Tags)
+                    .Include(g => g.Lokacija)
+                    .Include(g => g.Komentar)
                     .ToList();
 
                 if (slike == null || slike.Count == 0)
@@ -53,9 +54,12 @@ namespace GalerijaWebApi.Controllers
                         Sifra = g.sifra,
                         Naslov = g.Naslov,
                         Album = g.Album.naslov,
+                        Lokacija = g.Lokacija.naziv,
                         SifraAlbum = g.Album.sifra,
                         Datum = g.Datum,
-                        
+                        SifraLokacija = g.Lokacija.sifra,
+
+
                     });
                 });
                 return Ok(vrati);
@@ -89,6 +93,7 @@ namespace GalerijaWebApi.Controllers
             {
 
                 var album = _context.album.Find(slikaDTO.SifraAlbum);
+                var lokacija = _context.lokacija.Find(slikaDTO.SifraAlbum);
 
                 if (album == null)
                 {
@@ -99,7 +104,9 @@ namespace GalerijaWebApi.Controllers
                 {
                     Naslov = slikaDTO.Naslov,
                     Album = album,
-                    Datum = slikaDTO.Datum
+                    Datum = slikaDTO.Datum,
+                    Lokacija = lokacija
+
                 };
 
                 _context.Slika.Add(g);
@@ -107,6 +114,7 @@ namespace GalerijaWebApi.Controllers
 
                 slikaDTO.Sifra = g.sifra;
                 slikaDTO.Album = album.naslov;
+                slikaDTO.Lokacija = lokacija.naziv;
 
                 return Ok(slikaDTO);
 
@@ -144,6 +152,13 @@ namespace GalerijaWebApi.Controllers
                     return BadRequest();
                 }
 
+                var lokacija = _context.lokacija.Find(slikaDTO.SifraLokacija);
+
+                if (lokacija == null)
+                {
+                    return BadRequest();
+                }
+
                 var slika = _context.Slika.Find(sifra);
 
                 if (slika == null)
@@ -154,12 +169,14 @@ namespace GalerijaWebApi.Controllers
                 slika.Naslov = slikaDTO.Naslov;
                 slika.Album = album;
                 slika.Datum = slikaDTO.Datum;
+                slika.Lokacija = lokacija;
 
                 _context.Slika.Update(slika);
                 _context.SaveChanges();
 
                 slikaDTO.Sifra = sifra;
                 slikaDTO.Album = album.naslov;
+                slikaDTO.Lokacija = lokacija.naziv;
 
                 return Ok(slikaDTO);
             }
@@ -245,8 +262,8 @@ namespace GalerijaWebApi.Controllers
                     vrati.Add(new TagDTO()
                     {
                         sifra = p.sifra,
-                        naziv = p.naziv,
-                       
+                        naziv = p.naziv
+
                     });
                 });
                 return Ok(vrati);
@@ -294,7 +311,8 @@ namespace GalerijaWebApi.Controllers
                     return BadRequest();
                 }
 
-              
+
+
                 slika.Tags.Add(tag);
 
                 _context.Slika.Update(slika);
@@ -314,7 +332,7 @@ namespace GalerijaWebApi.Controllers
         }
 
         [HttpDelete]
-        [Route("{sifra:int}/dodaj/{tagSifra:int}")]
+        [Route("{sifra:int}/obrisi/{tagSifra:int}")]
         public IActionResult ObrisiTag(int sifra, int tagSifra)
         {
 
@@ -366,7 +384,57 @@ namespace GalerijaWebApi.Controllers
 
         }
 
+        [HttpGet]
+        [Route("{sifra:int}/komentari")]
+        public IActionResult GetKomentari(int sifra)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            if (sifra <= 0)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                var slika = _context.Slika
+                    .Include(g => g.Komentar)
+                    .FirstOrDefault(g => g.sifra == sifra);
+
+                if (slika == null)
+                {
+                    return BadRequest();
+                }
+
+                if (slika.Komentar == null || slika.Komentar.Count == 0)
+                {
+                    return new EmptyResult();
+                }
+
+                List<KomentarDTO> vrati = new();
+                slika.Komentar.ForEach(p =>
+                {
+                    vrati.Add(new KomentarDTO()
+                    {
+                        sifra = p.sifra,
+                        sadrzaj = p.sadrzaj
+
+                    });
+                });
+                return Ok(vrati);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(
+                        StatusCodes.Status503ServiceUnavailable,
+                        ex.Message);
+            }
 
 
+
+        }
     }
 }
