@@ -16,6 +16,10 @@ namespace GalerijaWebApi.Controllers
         {
             _context = context;
         }
+
+        /// <summary>
+        /// Lista lokacija
+        /// </summary>
         [HttpGet]
         public IActionResult Get()
         {
@@ -42,7 +46,9 @@ namespace GalerijaWebApi.Controllers
 
 
         }
-
+        /// <summary>
+        /// Dodavanje nove lokacije
+        /// </summary>
         [HttpPost]
         public IActionResult Post(Lokacija lokacija)
         {
@@ -67,7 +73,9 @@ namespace GalerijaWebApi.Controllers
 
         }
 
-
+        /// <summary>
+        /// Mijenjanje lokacije
+        /// </summary>
         [HttpPut]
         [Route("{sifra:int}")]
         public IActionResult Put(int sifra, Lokacija Lokacija)
@@ -103,7 +111,9 @@ namespace GalerijaWebApi.Controllers
             }
 
         }
-
+        /// <summary>
+        /// Brisanje lokacije iz baze
+        /// </summary>
         [HttpDelete]
         [Route("{sifra:int}")]
         [Produces("application/json")]

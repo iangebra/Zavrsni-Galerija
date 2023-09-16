@@ -19,7 +19,9 @@ namespace GalerijaWebApi.Controllers
         {
             _context = context;
         }
-
+        /// <summary>
+        /// Lista tagova
+        /// </summary>
         [HttpGet]
         public IActionResult Get()
         {
@@ -56,7 +58,9 @@ namespace GalerijaWebApi.Controllers
         }
 
 
-
+        /// <summary>
+        /// Dodavanje novog taga
+        /// </summary>
         [HttpPost]
         public IActionResult Post(TagDTO dto)
         {
@@ -88,7 +92,9 @@ namespace GalerijaWebApi.Controllers
 
 
 
-
+        /// <summary>
+        /// Mijenjanje tagova
+        /// </summary>
         [HttpPut]
         [Route("{sifra:int}")]
         public IActionResult Put(int sifra, TagDTO pdto)
@@ -128,7 +134,9 @@ namespace GalerijaWebApi.Controllers
         }
 
 
-
+        /// <summary>
+        /// Brisanje tagova
+        /// </summary>
         [HttpDelete]
         [Route("{sifra:int}")]
         [Produces("application/json")]

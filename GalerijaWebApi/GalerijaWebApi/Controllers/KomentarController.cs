@@ -19,7 +19,9 @@ namespace GalerijaWebApi.Controllers
         {
             _context = context;
         }
-
+        /// <summary>
+        /// Lista svih komentara
+        /// </summary>
         [HttpGet]
         public IActionResult Get()
         {
@@ -58,7 +60,9 @@ namespace GalerijaWebApi.Controllers
         }
 
 
-
+        /// <summary>
+        /// Dodavanje komentara na sliku
+        /// </summary>
         [HttpPost]
         public IActionResult Post(KomentarDTO dto)
         {
@@ -66,10 +70,6 @@ namespace GalerijaWebApi.Controllers
             {
                 return BadRequest(ModelState);
             }
-
-
-
-
 
             try
             {
@@ -101,10 +101,12 @@ namespace GalerijaWebApi.Controllers
                 return StatusCode(
                     StatusCodes.Status503ServiceUnavailable, ex.Message);
             }
-        }      
+        }
 
 
-
+        /// <summary>
+        /// Brisanje komentara
+        /// </summary>
         [HttpDelete]
         [Route("{sifra:int}")]
         [Produces("application/json")]

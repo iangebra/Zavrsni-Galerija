@@ -16,6 +16,10 @@ namespace GalerijaWebApi.Controllers
         {
             _context = context;
         }
+
+        /// <summary>
+        /// Lista albuma u bazi
+        /// </summary>
         [HttpGet]
         public IActionResult Get()
         {
@@ -42,7 +46,9 @@ namespace GalerijaWebApi.Controllers
 
 
         }
-
+        /// <summary>
+        /// Dodavanje novog albuma
+        /// </summary>
         [HttpPost]
         public IActionResult Post(Album album)
         {
@@ -67,7 +73,9 @@ namespace GalerijaWebApi.Controllers
 
         }
 
-
+        /// <summary>
+        /// Mijenjanje albuma u bazi
+        /// </summary>
         [HttpPut]
         [Route("{sifra:int}")]
         public IActionResult Put(int sifra, Album Album)
@@ -103,7 +111,9 @@ namespace GalerijaWebApi.Controllers
             }
 
         }
-
+        /// <summary>
+        /// Brisanje albuma
+        /// </summary>
         [HttpDelete]
         [Route("{sifra:int}")]
         [Produces("application/json")]

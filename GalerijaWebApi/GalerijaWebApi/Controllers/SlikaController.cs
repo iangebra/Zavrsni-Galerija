@@ -21,7 +21,9 @@ namespace GalerijaWebApi.Controllers
             _context = context;
             _logger = logger;
         }
-
+        /// <summary>
+        /// Dohvaća slike iz baze
+        /// </summary>
         [HttpGet]
         public IActionResult Get()
         {
@@ -74,7 +76,9 @@ namespace GalerijaWebApi.Controllers
 
         }
 
-
+        /// <summary>
+        /// Dodavanje slike u bazu
+        /// </summary>
         [HttpPost]
         public IActionResult Post(SlikaDTO slikaDTO)
         {
@@ -129,7 +133,9 @@ namespace GalerijaWebApi.Controllers
 
         }
 
-
+        /// <summary>
+        /// Mijenjanje slike u bazi
+        /// </summary>
         [HttpPut]
         [Route("{sifra:int}")]
         public IActionResult Put(int sifra, SlikaDTO slikaDTO)
@@ -191,7 +197,10 @@ namespace GalerijaWebApi.Controllers
         }
 
 
-
+        /// <summary>
+        /// Briše sliku iz baze
+        /// </summary>
+       
         [HttpDelete]
         [Route("{sifra:int}")]
         [Produces("application/json")]
@@ -225,7 +234,9 @@ namespace GalerijaWebApi.Controllers
         }
 
 
-
+        /// <summary>
+        /// Tagovi na slici
+        /// </summary>
         [HttpGet]
         [Route("{sifra:int}/tags")]
         public IActionResult GetTags(int sifra)
@@ -277,7 +288,9 @@ namespace GalerijaWebApi.Controllers
 
 
         }
-
+        /// <summary>
+        /// Dodavanje taga na sliku
+        /// </summary>
         [HttpPost]
         [Route("{sifra:int}/dodaj/{tagSifra:int}")]
         public IActionResult DodajTag(int sifra, int tagSifra)
@@ -330,7 +343,9 @@ namespace GalerijaWebApi.Controllers
             }
 
         }
-
+        /// <summary>
+        /// Brisanje taga sa slike
+        /// </summary>
         [HttpDelete]
         [Route("{sifra:int}/obrisi/{tagSifra:int}")]
         public IActionResult ObrisiTag(int sifra, int tagSifra)
@@ -383,7 +398,9 @@ namespace GalerijaWebApi.Controllers
             }
 
         }
-
+        /// <summary>
+        /// Komentari sa pojedinacne slike
+        /// </summary>
         [HttpGet]
         [Route("{sifra:int}/komentari")]
         public IActionResult GetKomentari(int sifra)
