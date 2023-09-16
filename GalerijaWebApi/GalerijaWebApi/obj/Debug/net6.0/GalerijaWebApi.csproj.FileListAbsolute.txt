@@ -156,3 +156,5 @@ C:\Users\Polaznik\Documents\Github\Zavrsni-Galerija\GalerijaWebApi\GalerijaWebAp
 C:\Users\Polaznik\Documents\Github\Zavrsni-Galerija\GalerijaWebApi\GalerijaWebApi\obj\Debug\net6.0\GalerijaWebApi.pdb
 C:\Users\Polaznik\Documents\Github\Zavrsni-Galerija\GalerijaWebApi\GalerijaWebApi\obj\Debug\net6.0\GalerijaWebApi.genruntimeconfig.cache
 C:\Users\Polaznik\Documents\Github\Zavrsni-Galerija\GalerijaWebApi\GalerijaWebApi\obj\Debug\net6.0\ref\GalerijaWebApi.dll
+C:\Users\Polaznik\Documents\Github\Zavrsni-Galerija\GalerijaWebApi\GalerijaWebApi\bin\Debug\net6.0\GalerijaWebApi.xml
+C:\Users\Polaznik\Documents\Github\Zavrsni-Galerija\GalerijaWebApi\GalerijaWebApi\obj\Debug\net6.0\GalerijaWebApi.xml

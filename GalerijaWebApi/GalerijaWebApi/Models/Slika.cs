@@ -14,4 +14,3 @@ namespace GalerijaWebApi.Models
         public List<Komentar> Komentar { get; set; } = new();
     }
 }
-

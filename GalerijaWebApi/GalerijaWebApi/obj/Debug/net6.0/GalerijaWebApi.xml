@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GalerijaWebApi</name>
+    </assembly>
+    <members>
+        <member name="M:GalerijaWebApi.Controllers.SlikaController.#ctor(GalerijaWebApi.Data.GalerijaContext,Microsoft.Extensions.Logging.ILogger{GalerijaWebApi.Controllers.SlikaController})">
+            <param name="context"></param>
+        </member>
+    </members>
+</doc>
