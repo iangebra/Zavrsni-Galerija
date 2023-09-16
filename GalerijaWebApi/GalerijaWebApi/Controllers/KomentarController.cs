@@ -2,6 +2,7 @@
 using GalerijaWebApi.Models.DTO;
 using GalerijaWebApi.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace GalerijaWebApi.Controllers
 
@@ -27,7 +28,7 @@ namespace GalerijaWebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var komentari = _context.Komentar.ToList();
+            var komentari = _context.Komentar.Include(k=>k.Slika).ToList();
             if (komentari == null || komentari.Count == 0)
             {
                 return new EmptyResult();
@@ -42,6 +43,8 @@ namespace GalerijaWebApi.Controllers
                 {
                     sifra = p.sifra,
                     sadrzaj = p.sadrzaj,
+                    Slika = p.Slika?.Naslov,
+                    Datum=p.Datum
                 };
 
                 vrati.Add(pdto);
@@ -64,12 +67,27 @@ namespace GalerijaWebApi.Controllers
                 return BadRequest(ModelState);
             }
 
+
+
+
+
             try
             {
+
+                var slika = _context.Slika.Find(dto.SifraSlika);
+
+                if (slika == null)
+                {
+                    return BadRequest(ModelState);
+                }
+
+
                 Komentar p = new Komentar()
                 {
                     sifra = dto.sifra,
                     sadrzaj = dto.sadrzaj,
+                    Datum=DateTime.Now,
+                    Slika=slika
                 };
 
                 _context.Komentar.Add(p);

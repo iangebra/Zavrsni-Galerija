@@ -420,7 +420,9 @@ namespace GalerijaWebApi.Controllers
                     vrati.Add(new KomentarDTO()
                     {
                         sifra = p.sifra,
-                        sadrzaj = p.sadrzaj
+                        sadrzaj = p.sadrzaj,
+                        Slika = p.Slika?.Naslov,
+                        Datum=p.Datum
 
                     });
                 });
@@ -436,5 +438,7 @@ namespace GalerijaWebApi.Controllers
 
 
         }
+
+
     }
 }
