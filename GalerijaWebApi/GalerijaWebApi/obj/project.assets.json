@@ -3437,19 +3437,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Polaznik\\.nuget\\packages\\": {}
+    "C:\\Users\\Ivan\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Polaznik\\Documents\\Github\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\GalerijaWebApi.csproj",
+      "projectUniqueName": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\GalerijaWebApi.csproj",
       "projectName": "GalerijaWebApi",
-      "projectPath": "C:\\Users\\Polaznik\\Documents\\Github\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\GalerijaWebApi.csproj",
-      "packagesPath": "C:\\Users\\Polaznik\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Polaznik\\Documents\\Github\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\obj\\",
+      "projectPath": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\GalerijaWebApi.csproj",
+      "packagesPath": "C:\\Users\\Ivan\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Polaznik\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Ivan\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3457,6 +3457,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -3507,7 +3508,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }
