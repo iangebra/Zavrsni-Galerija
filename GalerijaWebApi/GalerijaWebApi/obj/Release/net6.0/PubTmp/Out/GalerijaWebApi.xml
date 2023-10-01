@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GalerijaWebApi</name>
+    </assembly>
+    <members>
+        <member name="M:GalerijaWebApi.Controllers.AlbumController.Get">
+            <summary>
+            Lista albuma u bazi
+            </summary>
+        </member>
+        <member name="M:GalerijaWebApi.Controllers.AlbumController.Post(GalerijaWebApi.Models.Album)">
+            <summary>
+            Dodavanje novog albuma
+            </summary>
+        </member>
+        <member name="M:GalerijaWebApi.Controllers.AlbumController.Put(System.Int32,GalerijaWebApi.Models.Album)">
+            <summary>
+            Mijenjanje albuma u bazi
+            </summary>
+        </member>
+        <member name="M:GalerijaWebApi.Controllers.AlbumController.Delete(System.Int32)">
+            <summary>
+            Brisanje albuma
+            </summary>
+        </member>
+        <member name="M:GalerijaWebApi.Controllers.KomentarController.Get">
+            <summary>
+            Lista svih komentara
+            </summary>
+        </member>
+        <member name="M:GalerijaWebApi.Controllers.KomentarController.Post(GalerijaWebApi.Models.KomentarDTO)">
+            <summary>
+            Dodavanje komentara na sliku
+            </summary>
+        </member>
+        <member name="M:GalerijaWebApi.Controllers.KomentarController.Delete(System.Int32)">
+            <summary>
+            Brisanje komentara
+            </summary>
+        </member>
+        <member name="M:GalerijaWebApi.Controllers.LokacijaController.Get">
+            <summary>
+            Lista lokacija
+            </summary>
+        </member>
+        <member name="M:GalerijaWebApi.Controllers.LokacijaController.Post(GalerijaWebApi.Models.Lokacija)">
+            <summary>
+            Dodavanje nove lokacije
+            </summary>
+        </member>
+        <member name="M:GalerijaWebApi.Controllers.LokacijaController.Put(System.Int32,GalerijaWebApi.Models.Lokacija)">
+            <summary>
+            Mijenjanje lokacije
+            </summary>
+        </member>
+        <member name="M:GalerijaWebApi.Controllers.LokacijaController.Delete(System.Int32)">
+            <summary>
+            Brisanje lokacije iz baze
+            </summary>
+        </member>
+        <member name="M:GalerijaWebApi.Controllers.SlikaController.#ctor(GalerijaWebApi.Data.GalerijaContext,Microsoft.Extensions.Logging.ILogger{GalerijaWebApi.Controllers.SlikaController})">
+            <param name="context"></param>
+        </member>
+        <member name="M:GalerijaWebApi.Controllers.SlikaController.Get">
+            <summary>
+            Dohvaća slike iz baze
+            </summary>
+        </member>
+        <member name="M:GalerijaWebApi.Controllers.SlikaController.Post(GalerijaWebApi.Models.DTO.SlikaDTO)">
+            <summary>
+            Dodavanje slike u bazu
+            </summary>
+        </member>
+        <member name="M:GalerijaWebApi.Controllers.SlikaController.Put(System.Int32,GalerijaWebApi.Models.DTO.SlikaDTO)">
+            <summary>
+            Mijenjanje slike u bazi
+            </summary>
+        </member>
+        <member name="M:GalerijaWebApi.Controllers.SlikaController.Delete(System.Int32)">
+            <summary>
+            Briše sliku iz baze
+            </summary>
+        </member>
+        <member name="M:GalerijaWebApi.Controllers.SlikaController.GetTags(System.Int32)">
+            <summary>
+            Tagovi na slici
+            </summary>
+        </member>
+        <member name="M:GalerijaWebApi.Controllers.SlikaController.DodajTag(System.Int32,System.Int32)">
+            <summary>
+            Dodavanje taga na sliku
+            </summary>
+        </member>
+        <member name="M:GalerijaWebApi.Controllers.SlikaController.ObrisiTag(System.Int32,System.Int32)">
+            <summary>
+            Brisanje taga sa slike
+            </summary>
+        </member>
+        <member name="M:GalerijaWebApi.Controllers.SlikaController.GetKomentari(System.Int32)">
+            <summary>
+            Komentari sa pojedinacne slike
+            </summary>
+        </member>
+        <member name="M:GalerijaWebApi.Controllers.TagController.Get">
+            <summary>
+            Lista tagova
+            </summary>
+        </member>
+        <member name="M:GalerijaWebApi.Controllers.TagController.Post(GalerijaWebApi.Models.DTO.TagDTO)">
+            <summary>
+            Dodavanje novog taga
+            </summary>
+        </member>
+        <member name="M:GalerijaWebApi.Controllers.TagController.Put(System.Int32,GalerijaWebApi.Models.DTO.TagDTO)">
+            <summary>
+            Mijenjanje tagova
+            </summary>
+        </member>
+        <member name="M:GalerijaWebApi.Controllers.TagController.Delete(System.Int32)">
+            <summary>
+            Brisanje tagova
+            </summary>
+        </member>
+    </members>
+</doc>
