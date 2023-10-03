@@ -79,3 +79,4 @@ C:\Users\Ivan\Documents\GitHub\Zavrsni-Galerija\GalerijaWebApi\GalerijaWebApi\ob
 C:\Users\Ivan\Documents\GitHub\Zavrsni-Galerija\GalerijaWebApi\GalerijaWebApi\obj\Release\net6.0\GalerijaWebApi.pdb
 C:\Users\Ivan\Documents\GitHub\Zavrsni-Galerija\GalerijaWebApi\GalerijaWebApi\obj\Release\net6.0\GalerijaWebApi.genruntimeconfig.cache
 C:\Users\Ivan\Documents\GitHub\Zavrsni-Galerija\GalerijaWebApi\GalerijaWebApi\obj\Release\net6.0\ref\GalerijaWebApi.dll
+C:\Users\Ivan\Documents\GitHub\Zavrsni-Galerija\GalerijaWebApi\GalerijaWebApi\bin\Release\net6.0\GalerijaWebApi.staticwebassets.runtime.json
