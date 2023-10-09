@@ -1,26 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route  } from 'react-router-dom';
+import Izbornik from './components/izbornik.component';
+import Pocetna from './components/pocetna.component';
+import NadzornaPloca from './components/nadzornaploca.component';
+import Smjerovi from './components/smjer/smjerovi.component';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Izbornik />
+      <Routes>
+        <Route path='/' element={<Pocetna />} />
+        <Route path='/nadzornaploca' element={<NadzornaPloca />} />
+        <Route path='/smjerovi' element={<Smjerovi />} />
+      </Routes>
+     
+    </Router>
   );
 }
-
-export default App;

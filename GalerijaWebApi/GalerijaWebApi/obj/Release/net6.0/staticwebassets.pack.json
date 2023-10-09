@@ -41,12 +41,12 @@
       "PackagePath": "staticwebassets\\service-worker.js.map"
     },
     {
-      "Id": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\css\\main.073c9b0a.css",
-      "PackagePath": "staticwebassets\\static\\css\\main.073c9b0a.css"
+      "Id": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\css\\main.994f2fad.css",
+      "PackagePath": "staticwebassets\\static\\css\\main.994f2fad.css"
     },
     {
-      "Id": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\css\\main.073c9b0a.css.map",
-      "PackagePath": "staticwebassets\\static\\css\\main.073c9b0a.css.map"
+      "Id": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\css\\main.994f2fad.css.map",
+      "PackagePath": "staticwebassets\\static\\css\\main.994f2fad.css.map"
     },
     {
       "Id": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\js\\787.2d0ebaa6.chunk.js",
@@ -57,20 +57,20 @@
       "PackagePath": "staticwebassets\\static\\js\\787.2d0ebaa6.chunk.js.map"
     },
     {
-      "Id": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\js\\main.1891a268.js",
-      "PackagePath": "staticwebassets\\static\\js\\main.1891a268.js"
+      "Id": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\js\\main.6ae5ad92.js",
+      "PackagePath": "staticwebassets\\static\\js\\main.6ae5ad92.js"
     },
     {
-      "Id": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\js\\main.1891a268.js.LICENSE.txt",
-      "PackagePath": "staticwebassets\\static\\js\\main.1891a268.js.LICENSE.txt"
+      "Id": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\js\\main.6ae5ad92.js.LICENSE.txt",
+      "PackagePath": "staticwebassets\\static\\js\\main.6ae5ad92.js.LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\js\\main.1891a268.js.map",
-      "PackagePath": "staticwebassets\\static\\js\\main.1891a268.js.map"
+      "Id": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\js\\main.6ae5ad92.js.map",
+      "PackagePath": "staticwebassets\\static\\js\\main.6ae5ad92.js.map"
     },
     {
-      "Id": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\media\\logo.103b5fa18196d5665a7e12318285c916.svg",
-      "PackagePath": "staticwebassets\\static\\media\\logo.103b5fa18196d5665a7e12318285c916.svg"
+      "Id": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\media\\logo.cd39162d86cb9ddb6b99ef60742e6ab4.svg",
+      "PackagePath": "staticwebassets\\static\\media\\logo.cd39162d86cb9ddb6b99ef60742e6ab4.svg"
     },
     {
       "Id": "obj\\Release\\net6.0\\staticwebassets\\msbuild.GalerijaWebApi.Microsoft.AspNetCore.StaticWebAssets.props",
