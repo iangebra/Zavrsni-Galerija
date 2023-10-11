@@ -160,3 +160,4 @@ C:\Users\Polaznik\Documents\Github\Zavrsni-Galerija\GalerijaWebApi\GalerijaWebAp
 C:\Users\Polaznik\Documents\Github\Zavrsni-Galerija\GalerijaWebApi\GalerijaWebApi\obj\Debug\net6.0\GalerijaWebApi.xml
 C:\Users\Ivan\Documents\GitHub\Zavrsni-Galerija\GalerijaWebApi\GalerijaWebApi\bin\Debug\net6.0\GalerijaWebApi.xml
 C:\Users\Ivan\Documents\GitHub\Zavrsni-Galerija\GalerijaWebApi\GalerijaWebApi\obj\Debug\net6.0\GalerijaWebApi.xml
+C:\Users\Ivan\Documents\GitHub\Zavrsni-Galerija\GalerijaWebApi\GalerijaWebApi\bin\Debug\net6.0\GalerijaWebApi.staticwebassets.runtime.json

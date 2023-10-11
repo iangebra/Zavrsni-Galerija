@@ -26,3 +26,11 @@
   width: 100%;
   margin-bottom: 0.5rem;
 }
+
+.broj{
+  text-align: right;
+}
+
+.sredina{
+  text-align: center;
+}
