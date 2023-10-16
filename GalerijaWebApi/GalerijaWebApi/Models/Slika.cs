@@ -1,9 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using GalerijaWebApi.Validations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GalerijaWebApi.Models
 {
     public class Slika : Entitet
     {
+        [NazivNeMozeBitiBroj]
         public string Naslov { get; set; }
         public DateTime? Datum { get; set; }
         [ForeignKey("album")]

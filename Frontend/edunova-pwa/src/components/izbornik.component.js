@@ -15,18 +15,17 @@ export default class Izbornik extends Component{
 
             <Navbar expand="lg" className="bg-body-tertiary">
             <Container>
-              <Navbar.Brand href="/"> <img className="App-logo" src={logo} alt="" /> Edunova App</Navbar.Brand>
+              <Navbar.Brand href="/"> <img className="App-logo" src={logo} alt="" /> Galerija App</Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
                   <Nav.Link href="/nadzornaploca">Nadzorna ploča</Nav.Link>
-                  <NavDropdown title="Programi" id="basic-nav-dropdown">
-                    <NavDropdown.Item href="/smjerovi">Smjerovi</NavDropdown.Item>
-                    <NavDropdown.Item href="/polaznici">
-                      Polaznici
+                  <NavDropdown title="Padajuci" id="basic-nav-dropdown">
+                    <NavDropdown.Item href="/albumi">Albumi</NavDropdown.Item>
+                    <NavDropdown.Item href="/tagovi">
+                      Tagovi
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="/grupe">Grupe</NavDropdown.Item>
-                    <NavDropdown.Divider />
+                   
                     <NavDropdown.Item target="_blank" href="/swagger/index.html">
                       Swagger
                     </NavDropdown.Item>
