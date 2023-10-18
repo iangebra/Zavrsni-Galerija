@@ -49,18 +49,6 @@
       "PackagePath": "staticwebassets\\service-worker.js.map"
     },
     {
-      "Id": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\slike\\slike\\1.jpg",
-      "PackagePath": "staticwebassets\\slike\\slike\\1.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\slike\\slike\\2.jpg",
-      "PackagePath": "staticwebassets\\slike\\slike\\2.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\slike\\slike\\3.png",
-      "PackagePath": "staticwebassets\\slike\\slike\\3.png"
-    },
-    {
       "Id": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\css\\main.277ef1a0.css",
       "PackagePath": "staticwebassets\\static\\css\\main.277ef1a0.css"
     },
@@ -77,16 +65,16 @@
       "PackagePath": "staticwebassets\\static\\js\\787.2d0ebaa6.chunk.js.map"
     },
     {
-      "Id": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\js\\main.31110fcd.js",
-      "PackagePath": "staticwebassets\\static\\js\\main.31110fcd.js"
+      "Id": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\js\\main.869d588d.js",
+      "PackagePath": "staticwebassets\\static\\js\\main.869d588d.js"
     },
     {
-      "Id": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\js\\main.31110fcd.js.LICENSE.txt",
-      "PackagePath": "staticwebassets\\static\\js\\main.31110fcd.js.LICENSE.txt"
+      "Id": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\js\\main.869d588d.js.LICENSE.txt",
+      "PackagePath": "staticwebassets\\static\\js\\main.869d588d.js.LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\js\\main.31110fcd.js.map",
-      "PackagePath": "staticwebassets\\static\\js\\main.31110fcd.js.map"
+      "Id": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\js\\main.869d588d.js.map",
+      "PackagePath": "staticwebassets\\static\\js\\main.869d588d.js.map"
     },
     {
       "Id": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\media\\logo.cd39162d86cb9ddb6b99ef60742e6ab4.svg",

@@ -74,25 +74,22 @@ export default class Slike extends Component {
               {slike && slike.map((slika,index) => (
                 
                 <tr key={index}>
-                  <td> 
+                  
                   <td>{slika.naslov}</td>
                   <td>{slika.datum}</td>
                   <td>{slika.album}</td>
                   <td>{slika.lokacija}</td>
                   <td>{slika.tag}</td>
                     
-                  </td>
+                  
                   <td>
-                    <Row>
-                      <Col>
+                    
                         <Link className="btn btn-primary gumb" to={`/slike/${slika.sifra}`}><FaEdit /></Link>
-                      </Col>
-                      <Col>
+                     
                         { 
                              <Button variant="danger"  className="gumb" onClick={() => this.obrisiSlika(slika.sifra)}><FaTrash /></Button>
                         }
-                      </Col>
-                    </Row>
+                     
                     
                   </td>
                 </tr>

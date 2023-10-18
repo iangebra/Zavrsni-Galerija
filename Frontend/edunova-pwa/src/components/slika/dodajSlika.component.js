@@ -18,6 +18,7 @@ export default class DodajSlika extends Component {
     this.dodajSlika = this.dodajSlika.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.dohvatiAlbumi = this.dohvatiAlbumi.bind(this);
+    this.dohvatiLokacija = this.dohvatiAlbumi.bind(this);
 
     this.state = {
       albumi: [],
@@ -100,7 +101,7 @@ export default class DodajSlika extends Component {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="datum">
-            <Form.Label>Datum početka</Form.Label>
+            <Form.Label>Datum</Form.Label>
             <Form.Control type="date" name="datum" placeholder=""  />
           </Form.Group>     
 

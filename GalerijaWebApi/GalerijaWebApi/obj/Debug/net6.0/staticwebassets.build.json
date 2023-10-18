@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "aZW5GXwOL5WmscnKJaV9VvtlrOfPA9Rd3gcPyyxT8j4=",
+  "Hash": "bv9nnY2sE1cFvCBpbnmjmfv0IDsnzhXTw+SSde552lg=",
   "Source": "GalerijaWebApi",
   "BasePath": "_content/GalerijaWebApi",
   "Mode": "Default",
@@ -221,57 +221,6 @@
       "OriginalItemSpec": "wwwroot\\service-worker.js.map"
     },
     {
-      "Identity": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\slike\\slike\\1.jpg",
-      "SourceId": "GalerijaWebApi",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\",
-      "BasePath": "_content/GalerijaWebApi",
-      "RelativePath": "slike/slike/1.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\slike\\slike\\1.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\slike\\slike\\2.jpg",
-      "SourceId": "GalerijaWebApi",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\",
-      "BasePath": "_content/GalerijaWebApi",
-      "RelativePath": "slike/slike/2.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\slike\\slike\\2.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\slike\\slike\\3.png",
-      "SourceId": "GalerijaWebApi",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\",
-      "BasePath": "_content/GalerijaWebApi",
-      "RelativePath": "slike/slike/3.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\slike\\slike\\3.png"
-    },
-    {
       "Identity": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\css\\main.277ef1a0.css",
       "SourceId": "GalerijaWebApi",
       "SourceType": "Discovered",
@@ -340,12 +289,12 @@
       "OriginalItemSpec": "wwwroot\\static\\js\\787.2d0ebaa6.chunk.js.map"
     },
     {
-      "Identity": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\js\\main.31110fcd.js",
+      "Identity": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\js\\main.869d588d.js",
       "SourceId": "GalerijaWebApi",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\",
       "BasePath": "_content/GalerijaWebApi",
-      "RelativePath": "static/js/main.31110fcd.js",
+      "RelativePath": "static/js/main.869d588d.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -354,15 +303,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\static\\js\\main.31110fcd.js"
+      "OriginalItemSpec": "wwwroot\\static\\js\\main.869d588d.js"
     },
     {
-      "Identity": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\js\\main.31110fcd.js.LICENSE.txt",
+      "Identity": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\js\\main.869d588d.js.LICENSE.txt",
       "SourceId": "GalerijaWebApi",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\",
       "BasePath": "_content/GalerijaWebApi",
-      "RelativePath": "static/js/main.31110fcd.js.LICENSE.txt",
+      "RelativePath": "static/js/main.869d588d.js.LICENSE.txt",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -371,15 +320,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\static\\js\\main.31110fcd.js.LICENSE.txt"
+      "OriginalItemSpec": "wwwroot\\static\\js\\main.869d588d.js.LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\js\\main.31110fcd.js.map",
+      "Identity": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\js\\main.869d588d.js.map",
       "SourceId": "GalerijaWebApi",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\",
       "BasePath": "_content/GalerijaWebApi",
-      "RelativePath": "static/js/main.31110fcd.js.map",
+      "RelativePath": "static/js/main.869d588d.js.map",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -388,7 +337,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\static\\js\\main.31110fcd.js.map"
+      "OriginalItemSpec": "wwwroot\\static\\js\\main.869d588d.js.map"
     },
     {
       "Identity": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\media\\logo.cd39162d86cb9ddb6b99ef60742e6ab4.svg",
