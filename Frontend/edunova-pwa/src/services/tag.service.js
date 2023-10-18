@@ -1,21 +1,21 @@
 import http from '../http-common';
 
-class PolaznikDataService {
+class TagDataService {
   async getAll() {
-    return await http.get('/polaznik');
+    return await http.get('/tag');
   }
 
 
 
   async getBySifra(sifra) {
-    return await http.get('/polaznik/' + sifra);
+    return await http.get('/tag/' + sifra);
   }
 
-  async post(polaznik){
+  async post(tag){
     //console.log(smjer);
-    const odgovor = await http.post('/polaznik',polaznik)
+    const odgovor = await http.post('/tag',tag)
        .then(response => {
-         return {ok:true, poruka: 'Unio polaznika'}; // return u odgovor
+         return {ok:true, poruka: 'Unio taga'}; // return u odgovor
        })
        .catch(error => {
         console.log(error.response);
@@ -25,10 +25,10 @@ class PolaznikDataService {
        return odgovor;
   }
 
-  async put(sifra,polaznik){
-    const odgovor = await http.put('/polaznik/' + sifra,polaznik)
+  async put(sifra,tag){
+    const odgovor = await http.put('/tag/' + sifra,tag)
        .then(response => {
-         return {ok:true, poruka: 'Promjenio polaznika'}; // return u odgovor
+         return {ok:true, poruka: 'Promjenio taga'}; // return u odgovor
        })
        .catch(error => {
         console.log(error.response);
@@ -41,7 +41,7 @@ class PolaznikDataService {
 
   async delete(sifra){
     
-    const odgovor = await http.delete('/polaznik/' + sifra)
+    const odgovor = await http.delete('/tag/' + sifra)
        .then(response => {
          return {ok:true, poruka: 'Obrisao uspješno'};
        })
@@ -56,4 +56,4 @@ class PolaznikDataService {
  
 }
 
-export default new PolaznikDataService();
+export default new TagDataService();

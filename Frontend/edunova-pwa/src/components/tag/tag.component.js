@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PolaznikDataService from "../../services/polaznik.service";
+import TagDataService from "../../services/tag.service";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -11,13 +11,13 @@ import { FaTrash } from 'react-icons/fa';
 import { Modal } from 'react-bootstrap';
 
 
-export default class Polaznici extends Component {
+export default class Tag extends Component {
   constructor(props) {
     super(props);
-    this.dohvatiPolaznici = this.dohvatiPolaznici.bind(this);
+    this.dohvatiTag = this.dohvatiTag.bind(this);
 
     this.state = {
-      polaznici: [],
+      tag: [],
       prikaziModal: false
     };
   }
@@ -28,13 +28,13 @@ export default class Polaznici extends Component {
   zatvoriModal = () => this.setState({ prikaziModal: false });
 
   componentDidMount() {
-    this.dohvatiPolaznici();
+    this.dohvatiTag();
   }
-  dohvatiPolaznici() {
-    PolaznikDataService.getAll()
+  dohvatiTag() {
+    TagDataService.getAll()
       .then(response => {
         this.setState({
-          polaznici: response.data
+          tag: response.data
         });
       })
       .catch(e => {
@@ -42,11 +42,11 @@ export default class Polaznici extends Component {
       });
   }
 
-  async obrisiPolaznik(sifra){
+  async obrisiTag(sifra){
     
-    const odgovor = await PolaznikDataService.delete(sifra);
+    const odgovor = await TagDataService.delete(sifra);
     if(odgovor.ok){
-     this.dohvatiPolaznici();
+     this.dohvatiTag();
     }else{
      // alert(odgovor.poruka);
       this.otvoriModal();
@@ -55,28 +55,25 @@ export default class Polaznici extends Component {
    }
 
   render() {
-    const { polaznici} = this.state;
+    const { tag} = this.state;
     return (
 
     <Container>
-      <a href="/polaznici/dodaj" className="btn btn-success gumb">Dodaj novog polaznika</a>
+      <a href="/tag/dodaj" className="btn btn-success gumb">Dodaj novi tag</a>
     <Row>
-      { polaznici && polaznici.map((p) => (
+      { tag && tag.map((p) => (
            
            <Col key={p.sifra} sm={12} lg={3} md={3}>
 
               <Card style={{ width: '18rem' }}>
                 <Card.Body>
-                  <Card.Title>{p.ime} {p.prezime}</Card.Title>
-                  <Card.Text>
-                    {p.email}
-                  </Card.Text>
+                  <Card.Title>{p.naziv}</Card.Title>                  
                   <Row>
                       <Col>
-                      <Link className="btn btn-primary gumb" to={`/polaznici/${p.sifra}`}><FaEdit /></Link>
+                      <Link className="btn btn-primary gumb" to={`/tag/${p.sifra}`}><FaEdit /></Link>
                       </Col>
                       <Col>
-                      <Button variant="danger" className="gumb"  onClick={() => this.obrisiPolaznik(p.sifra)}><FaTrash /></Button>
+                      <Button variant="danger" className="gumb"  onClick={() => this.obrisiTag(p.sifra)}><FaTrash /></Button>
                       </Col>
                     </Row>
                 </Card.Body>
@@ -91,7 +88,7 @@ export default class Polaznici extends Component {
               <Modal.Header closeButton>
                 <Modal.Title>Greška prilikom brisanja</Modal.Title>
               </Modal.Header>
-              <Modal.Body>Polaznik se nalazi na jednoj ili više grupa i ne može se obrisati.</Modal.Body>
+              <Modal.Body>Tag se nalazi na jednoj ili više grupa i ne može se obrisati.</Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={this.zatvoriModal}>
                   Zatvori

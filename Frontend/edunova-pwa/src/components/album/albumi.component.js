@@ -58,7 +58,7 @@ export default class Albumi extends Component{
                <Table striped bordered hover responsive>
                 <thead>
                     <tr>
-                        <th>Naziv</th>
+                        <th>Naslov</th>
                         <th>Opis</th>
                         
                     </tr>

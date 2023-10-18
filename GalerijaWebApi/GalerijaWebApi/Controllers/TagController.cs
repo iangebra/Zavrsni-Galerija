@@ -2,6 +2,8 @@
 using GalerijaWebApi.Models;
 using GalerijaWebApi.Models.DTO;
 using Microsoft.AspNetCore.Mvc;
+using GalerijaWebApi.Models.DTO;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace GalerijaWebApi.Controllers
@@ -159,6 +161,50 @@ namespace GalerijaWebApi.Controllers
             }
 
 
+        }
+
+        [HttpGet]
+        [Route("trazi/{uvjet}")]
+        public IActionResult TraziTag(string uvjet)
+        {
+            // ovdje će ići dohvaćanje u bazi
+
+            if (uvjet == null || uvjet.Length < 3)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                var tags = _context.Tag
+                    .Include(p => p.Slike)
+                    .Where(p => p.naziv.Contains(uvjet))
+
+                    // .FromSqlRaw($"SELECT a.* FROM polaznik a left join clan b on a.sifra=b.polaznik where concat(ime,' ',prezime,' ',ime) like '%@uvjet%'",
+                    //             new SqlParameter("uvjet", uvjet), new SqlParameter("grupa", grupa))
+                    .ToList();
+                // (b.grupa is null or b.grupa!=@grupa)  and 
+                List<TagDTO> vrati = new();
+
+                tags.ForEach(s => {
+                    var sdto = new TagDTO();
+                    // dodati u nuget automapper ili neki drugi i skužiti kako se s njim radi, sada ručno
+                    vrati.Add(new TagDTO
+                    {
+                        sifra = s.sifra,
+                        naziv = s.naziv
+                       
+                    });
+                });
+
+
+                return new JsonResult(vrati); //200
+
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable, e.Message); //204
+            }
         }
 
 

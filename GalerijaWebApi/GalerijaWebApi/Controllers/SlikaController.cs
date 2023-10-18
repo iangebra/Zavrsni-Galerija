@@ -76,6 +76,45 @@ namespace GalerijaWebApi.Controllers
 
         }
 
+
+        [HttpGet]
+        [Route("{sifra:int}")]
+        public IActionResult GetById(int sifra)
+        {
+            // ovdje će ići dohvaćanje u bazi
+
+
+            if (sifra == 0)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var e = _context.Slika.Include(i => i.Album)
+              .FirstOrDefault(x => x.sifra == sifra);
+
+            if (e == null)
+            {
+                return StatusCode(StatusCodes.Status204NoContent, e); //204
+            }
+
+            try
+            {
+                return new JsonResult(new SlikaDTO()
+                {
+                    Sifra = e.sifra,
+                    Naslov = e.Naslov,
+                    Datum = e.Datum,
+                    SifraAlbum = e.Album == null ? 0 : e.Album.sifra,
+                    Album = e.Album?.naslov
+                }); //200
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable, ex.Message); //204
+            }
+        }
+
         /// <summary>
         /// Dodavanje slike u bazu
         /// </summary>
@@ -453,7 +492,60 @@ namespace GalerijaWebApi.Controllers
             }
 
 
+        }
 
+
+        [HttpPut]
+        [Route("postaviSliku/{sifra:int}")]
+        public IActionResult PostaviSliku(int sifra, DodajSlikuDTO DodajSlikuDTO)
+        {
+            if (sifra == 0)
+            {
+                return BadRequest(); //400
+            }
+
+            if (DodajSlikuDTO == null || DodajSlikuDTO?.Base64?.Length == 0)
+            {
+                return BadRequest(); //400
+            }
+
+            var album = _context.album.Find(sifra);
+            if (album == null)
+            {
+                return BadRequest(); //400
+            }
+
+
+
+            try
+            {
+                var ds = Path.DirectorySeparatorChar;
+
+
+
+
+                string dir = Path.Combine(Directory.GetCurrentDirectory()
+                    + ds + "wwwroot" + ds + "slike" + ds + "slike");
+
+
+                if (!System.IO.Directory.Exists(dir))
+                {
+                    System.IO.Directory.CreateDirectory(dir);
+                }
+
+
+                var putanja = Path.Combine(dir + ds + sifra + ".png");
+
+
+
+                System.IO.File.WriteAllBytes(putanja, Convert.FromBase64String(DodajSlikuDTO?.Base64));
+
+                return new JsonResult("{\"poruka\": \"Uspješno pohranjena slika\"}");
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable, e.Message); //204
+            }
         }
 
 
