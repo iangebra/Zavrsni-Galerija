@@ -88,7 +88,7 @@ export default class Tag extends Component {
               <Modal.Header closeButton>
                 <Modal.Title>Greška prilikom brisanja</Modal.Title>
               </Modal.Header>
-              <Modal.Body>Tag se nalazi na jednoj ili više grupa i ne može se obrisati.</Modal.Body>
+              <Modal.Body>Tag se nalazi na jednoj ili više slika i ne može se obrisati.</Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={this.zatvoriModal}>
                   Zatvori

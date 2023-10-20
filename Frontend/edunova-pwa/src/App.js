@@ -16,6 +16,9 @@ import Lokacija from './components/lokacija/lokacija.component';
 import Slike from './components/slika/slike.component';
 import DodajSlika from './components/slika/dodajSlika.component';
 import PromjeniSlika from './components/slika/promjeniSlika.component';
+import Slikeizlistaj from './components/slika/slikeizlistaj.component';
+import Komentar from './components/komentar/komentar.component';
+import DodajKomentar from './components/komentar/dodajKomentar.component';
 
 
 
@@ -38,6 +41,9 @@ export default function App() {
         <Route path="/slike" element={<Slike />} />
         <Route path="/slike/dodaj" element={<DodajSlika />} />
         <Route path="/slike/:sifra" element={<PromjeniSlika />} />
+        <Route path="/slikeizlistaj" element={<Slikeizlistaj />} />
+        <Route path="/komentar" element={<Komentar />} />
+          <Route path="/komentar/dodaj" element={<DodajKomentar />} />
       </Routes>
      
     </Router>

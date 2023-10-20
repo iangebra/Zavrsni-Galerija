@@ -11,6 +11,7 @@
         public int SifraAlbum { get; set; }
         public int SifraLokacija { get; set; }
 
-        
+        public string? Slika { get; set; }
+
     }
 }

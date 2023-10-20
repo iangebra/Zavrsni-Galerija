@@ -48,9 +48,16 @@ namespace GalerijaWebApi.Controllers
                 }
 
                 List<SlikaDTO> vrati = new();
-
+                var ds = Path.DirectorySeparatorChar;
+                string dir = Path.Combine(Directory.GetCurrentDirectory()
+                    + ds + "wwwroot" + ds + "slike" + ds + "slike" + ds);
                 slike.ForEach(g =>
                 {
+                    var putanja = "/slike/slike/prazno.png";
+                    if (System.IO.File.Exists(dir + g.sifra + ".png"))
+                    {
+                        putanja = "/slike/slike/" + g.sifra + ".png";
+                    }
                     vrati.Add(new SlikaDTO()
                     {
                         Sifra = g.sifra,
@@ -60,6 +67,7 @@ namespace GalerijaWebApi.Controllers
                         SifraAlbum = g.Album.sifra,
                         Datum = g.Datum,
                         SifraLokacija = g.Lokacija.sifra,
+                        Slika = putanja
 
 
                     });

@@ -10,6 +10,7 @@ import { FaEdit } from 'react-icons/fa';
 import { FaTrash } from 'react-icons/fa';
 import moment from 'moment';
 import { Modal } from 'react-bootstrap';
+import Card from 'react-bootstrap/Card';
 
 
 export default class Slike extends Component {
@@ -59,52 +60,29 @@ export default class Slike extends Component {
     return (
 
     <Container>
-      <a href="/slike/dodaj" className="btn btn-success gumb">Dodaj novu sliku</a>
      
-      <Table striped bordered hover responsive>
-              <thead>
-                <tr>
-                <th>Slika</th>
-                  <th>Naslov</th>
-                  <th>Datum</th>
-                  <th>Album</th>
-                  <th>Lokacija</th>
-                  <th>Tags</th>
-                  <th>Komentari</th>
-                 
-                </tr>
-              </thead>
-              <tbody>
-              {slike && slike.map((slika,index) => (
-                
-                <tr key={index}>
-                   <td> <img src={slika.slika} /> </td>
-                  
-                  <td>{slika.naslov}</td>
-                  <td>{slika.datum}</td>
-                  <td>{slika.album}</td>
-                  <td>{slika.lokacija}</td>
-                  <td>{slika.tag}</td>
-                  <td>{slika.komentar}</td>
-                  
-                  
-                    
-                  
-                  <td>
-                    
-                        <Link className="btn btn-primary gumb" to={`/slike/${slika.sifra}`}><FaEdit /></Link>
+     <Row>
+      { slike && slike.map((p) => (
+           
+           <Col key={p.sifra} sm={12} lg={3} md={3}>
+
+              <Card style={{ width: '18rem' }}>
+              <Card.Img variant="top" src={p.slika} />
+                <Card.Body>
+                  <Card.Title>{p.naslov} </Card.Title>
+                  <Card.Text>
+                    {p.album}
+                  </Card.Text>
+                  <Row>
+                      
                      
-                        { 
-                             <Button variant="danger"  className="gumb" onClick={() => this.obrisiSlika(slika.sifra)}><FaTrash /></Button>
-                        }
-                     
-                    
-                  </td>
-                </tr>
-                ))
-              }
-              </tbody>
-            </Table>     
+                    </Row>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))
+      }
+      </Row>    
 
              <Modal show={this.state.prikaziModal} onHide={this.zatvoriModal}>
               <Modal.Header closeButton>

@@ -11,6 +11,9 @@ import { Link } from "react-router-dom";
 import moment from 'moment';
 import Table from 'react-bootstrap/Table';
 import { FaTrash } from 'react-icons/fa';
+import Cropper from "react-cropper";
+import "cropperjs/dist/cropper.css";
+import { Image } from "react-bootstrap";
 
 import { AsyncTypeahead } from 'react-bootstrap-typeahead';
 
@@ -19,13 +22,6 @@ export default class PromjeniSlika extends Component {
 
   constructor(props) {
     super(props);
-
-    
-
-  //  console.log('Konstruktor promjeniSlika');
-
-    
-
     this.slika = this.dohvatiSlika();
     this.promjeniSlika = this.promjeniSlika.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -34,6 +30,7 @@ export default class PromjeniSlika extends Component {
     this.obrisiTag = this.obrisiTag.bind(this);
     this.traziTag = this.traziTag.bind(this);
     this.dodajTag = this.dodajTag.bind(this);
+    this.spremiSliku = this.spremiSliku.bind(this);
 
 
     this.state = {
@@ -41,7 +38,8 @@ export default class PromjeniSlika extends Component {
       albumi: [],
       tagovi: [],
       sifraAlbum:0,
-      pronadeniTagovi: []
+      pronadeniTagovi: [],
+      trenutnaSlika: ""
     };
   }
 
@@ -58,9 +56,11 @@ export default class PromjeniSlika extends Component {
         let g = response.data;        
         g.datum = moment.utc(g.datum).format("yyyy-MM-DD");
         
+        
         //console.log(g.vrijemePocetka);
         this.setState({
-          slika: g
+          slika: g,
+          trenutnaSlika: g.slika
         });
        // console.log(response.data);
       })
@@ -72,15 +72,53 @@ export default class PromjeniSlika extends Component {
   
 
   async promjeniSlika(slika) {
-    const odgovor = await SlikaDataService.post(slika);
+    // ovo mora bolje
+    let href = window.location.href;
+    let niz = href.split('/'); 
+    const odgovor = await SlikaDataService.put(niz[niz.length-1],slika);
     if(odgovor.ok){
-      // routing na albumovi
       window.location.href='/slike';
     }else{
       // pokaži grešku
       console.log(odgovor);
     }
   }
+
+  handleSubmit(e) {
+    // Prevent the browser from reloading the page
+    e.preventDefault();
+
+    // Read the form data
+    const podaci = new FormData(e.target);
+    //Object.keys(formData).forEach(fieldName => {
+    // console.log(fieldName, formData[fieldName]);
+    //})
+    
+    //console.log(podaci.get('verificiran'));
+    // You can pass formData as a service body directly:
+
+    this.promjeniSlika({
+      naslov: podaci.get('naslov'),
+      album: podaci.get('album'),
+      lokacija: podaci.get('lokacija'),
+      slika: podaci.get('slika')      
+    });
+    
+  }
+
+  _crop() {
+    // image in dataUrl
+   // console.log(this.cropper.getCroppedCanvas().toDataURL());
+   this.setState({
+    slikaZaServer: this.cropper.getCroppedCanvas().toDataURL()
+  });
+}
+
+onCropperInit(cropper) {
+    this.cropper = cropper;
+}
+
+
 
 
   async dohvatiAlbumi() {
@@ -166,12 +204,77 @@ export default class PromjeniSlika extends Component {
     
   }
 
+  _crop() {
+    // image in dataUrl
+   // console.log(this.cropper.getCroppedCanvas().toDataURL());
+   this.setState({
+    slikaZaServer: this.cropper.getCroppedCanvas().toDataURL()
+  });
+}
 
+onCropperInit(cropper) {
+    this.cropper = cropper;
+}
+
+onChange = (e) => {
+  e.preventDefault();
+  let files;
+  if (e.dataTransfer) {
+    files = e.dataTransfer.files;
+  } else if (e.target) {
+    files = e.target.files;
+  }
+  const reader = new FileReader();
+  reader.onload = () => {
+    this.setState({
+      image: reader.result
+    });
+  };
+  try {
+    reader.readAsDataURL(files[0]);
+  } catch (error) {
+    
+  }
+  
+}
+
+
+spremiSlikuAkcija = () =>{
+  const { slikaZaServer} = this.state;
+  const { slika} = this.state;
+  const { trenutnaSlika} = this.state;
+  
+
+  this.spremiSliku(slika.sifra,slikaZaServer); 
+};
+
+
+async spremiSliku(sifra,slika){
+
+  let base64 = slika;
+  base64=base64.replace('data:image/png;base64,', '');
+  const odgovor = await  SlikaDataService.postaviSliku(sifra,{
+    base64: base64
+  });
+if(odgovor.ok){
+  
+  this.setState({
+    trenutnaSlika: slika
+  });
+}else{
+  // pokaži grešku
+  console.log(odgovor);
+}
+
+}
   render() { 
     const { albumi} = this.state;
     const { slika} = this.state;
     const { tagovi} = this.state;
+    const { image} = this.state;
     const { pronadeniTagovi} = this.state;
+    const { slikaZaServer} = this.state;
+    const { trenutnaSlika} = this.state;
 
 
     const obradiTrazenje = (uvjet) => {
@@ -209,6 +312,43 @@ export default class PromjeniSlika extends Component {
                 </Form.Select>
               </Form.Group>
 
+              <Row>
+              <Col key="1" sm={12} lg={6} md={6}>
+                Trenutna slika<br />
+                <Image src={trenutnaSlika} className="slika"/>
+                </Col>
+                <Col key="2" sm={12} lg={6} md={6}>
+                  Nova slika<br />
+                <Image src={slikaZaServer} className="slika"/>
+                </Col>
+              </Row>
+
+            </Col>
+            <Col key="2" sm={12} lg={6} md={6}>
+            <input type="file" onChange={this.onChange} />
+
+             <input type="button" onClick={this.spremiSlikuAkcija} value={"Spremi sliku"} />
+
+                <Cropper
+                    src={image}
+                    style={{ height: 400, width: "100%" }}
+                    initialAspectRatio={1}
+                    guides={true}
+                    viewMode={1}
+                    minCropBoxWidth={50}
+                    minCropBoxHeight={50}
+                    cropBoxResizable={false}
+                    background={false}
+                    responsive={true}
+                    checkOrientation={false} 
+                    crop={this._crop.bind(this)}
+                    onInitialized={this.onCropperInit.bind(this)}
+                />
+        
+            </Col>
+            </Row>
+
+
               <Form.Group className="mb-3" controlId="datum">
                 <Form.Label>Datum</Form.Label>
                 <Form.Control type="date" name="datum" placeholder="" defaultValue={slika.datum}  />
@@ -226,7 +366,7 @@ export default class PromjeniSlika extends Component {
                 </Button>
                 </Col>
               </Row>
-          </Col>
+          
           <Col key="2" sm={12} lg={6} md={6} className="tagoviSlika">
           <Form.Group className="mb-3" controlId="uvjet">
                 <Form.Label>Traži tag</Form.Label>
@@ -271,12 +411,7 @@ export default class PromjeniSlika extends Component {
               </tbody>
             </Table>    
           </Col>
-          </Row>
-
-          
-         
-          
-        </Form>
+          </Form>
 
 
       

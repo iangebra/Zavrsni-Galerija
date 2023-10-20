@@ -48,7 +48,7 @@ class SlikaDataService {
 
      async obrisiTag(slika, tag){
     
-      const odgovor = await http.delete('/slika/obrisitag/' + slika + '/' + tag)
+      const odgovor = await http.delete('/slika/obrisiTag/' + slika + '/' + tag)
          .then(response => {
            return {ok:true, poruka: 'Obrisao uspješno'};
          })
@@ -62,7 +62,7 @@ class SlikaDataService {
 
        async dodajTag(slika, tag){
     
-        const odgovor = await http.post('/slika/dodajtag/' + slika + '/' + tag)
+        const odgovor = await http.post('/slika/dodajTag/' + slika + '/' + tag)
            .then(response => {
              return {ok:true, poruka: 'Dodao uspješno'};
            })
@@ -73,6 +73,34 @@ class SlikaDataService {
      
            return odgovor;
          }
+
+         async dodajKomentar(slika, komentar){
+    
+          const odgovor = await http.post('/slika/dodajKomentar/' + slika + '/' + komentar)
+             .then(response => {
+               return {ok:true, poruka: 'Dodao uspješno'};
+             })
+             .catch(error => {
+               console.log(error);
+               return {ok:false, poruka: error.response.data};
+             });
+       
+             return odgovor;
+           }
+
+         async postaviSliku(sifra,slika){
+    
+          const odgovor = await http.put('/slika/postaviSliku/' + sifra,slika)
+             .then(response => {
+               return {ok:true, poruka: 'Postavio sliku'};
+             })
+             .catch(error => {
+               console.log(error);
+               return {ok:false, poruka: error.response.data};
+             });
+       
+             return odgovor;
+           }
 
 }
 

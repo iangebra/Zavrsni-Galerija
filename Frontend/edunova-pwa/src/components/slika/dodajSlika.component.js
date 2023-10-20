@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SlikaDataService from "../../services/slika.service";
 import AlbumDataService from "../../services/album.service";
+import LokacijaDataService from "../../services/lokacija.service";
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -18,18 +19,26 @@ export default class DodajSlika extends Component {
     this.dodajSlika = this.dodajSlika.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.dohvatiAlbumi = this.dohvatiAlbumi.bind(this);
-    this.dohvatiLokacija = this.dohvatiAlbumi.bind(this);
+    this.dohvatiLokacija = this.dohvatiLokacija.bind(this);
 
     this.state = {
       albumi: [],
-      sifraAlbum:0
-    };
+      sifraAlbum:0,
+      lokacija: [],
+      sifraLokacija:0
+      
+    }
+
+    
   }
 
   componentDidMount() {
     //console.log("Dohvaćam smjerove");
     this.dohvatiAlbumi();
+    this.dohvatiLokacija();
   }
+
+  
 
   async dodajSlika(slika) {
     const odgovor = await SlikaDataService.post(slika);
@@ -59,6 +68,21 @@ export default class DodajSlika extends Component {
       });
   }
 
+  async dohvatiLokacija() {
+
+    await LokacijaDataService.get()
+      .then(response => {
+        this.setState({
+          lokacija: response.data,
+          sifraLokacija: response.data[0].sifra
+        });
+
+       // console.log(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }
 
   handleSubmit(e) {
     e.preventDefault();
@@ -70,7 +94,8 @@ export default class DodajSlika extends Component {
     this.dodajSlika({
       naslov: podaci.get('naslov'),
       datum: datum,
-      sifraAlbum: this.state.sifraAlbum
+      sifraAlbum: this.state.sifraAlbum,
+      sifraLokacija: this.state.sifraLokacija
     });
     
   }
@@ -78,6 +103,7 @@ export default class DodajSlika extends Component {
 
   render() { 
     const { albumi} = this.state;
+    const { lokacija} = this.state;
     return (
     <Container>
         <Form onSubmit={this.handleSubmit}>
@@ -95,6 +121,18 @@ export default class DodajSlika extends Component {
             }}>
             {albumi && albumi.map((album,index) => (
                   <option key={index} value={album.sifra}>{album.naslov}</option>
+
+            ))}
+            </Form.Select>
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="lokacija">
+            <Form.Label>Lokacija</Form.Label>
+            <Form.Select onChange={e => {
+              this.setState({ sifraLokacija: e.target.value});
+            }}>
+            {lokacija && lokacija.map((lokacija,index) => (
+                  <option key={index} value={lokacija.sifra}>{lokacija.naziv}</option>
 
             ))}
             </Form.Select>

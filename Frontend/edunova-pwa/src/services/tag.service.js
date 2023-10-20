@@ -11,6 +11,11 @@ class TagDataService {
     return await http.get('/tag/' + sifra);
   }
 
+  async traziTag(uvjet) {
+    console.log('Tražim s: ' + uvjet);
+    return await http.get('/tag/trazi/'+uvjet);
+  }
+
   async post(tag){
     //console.log(smjer);
     const odgovor = await http.post('/tag',tag)
