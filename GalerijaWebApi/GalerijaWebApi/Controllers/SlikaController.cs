@@ -50,13 +50,13 @@ namespace GalerijaWebApi.Controllers
                 List<SlikaDTO> vrati = new();
                 var ds = Path.DirectorySeparatorChar;
                 string dir = Path.Combine(Directory.GetCurrentDirectory()
-                    + ds + "wwwroot" + ds + "slike" + ds + "slike" + ds);
+                    + ds + "wwwroot" + ds + "slike" + ds);
                 slike.ForEach(g =>
                 {
-                    var putanja = "/slike/slike/prazno.png";
+                    var putanja = "/slike/prazno.png";
                     if (System.IO.File.Exists(dir + g.sifra + ".png"))
                     {
-                        putanja = "/slike/slike/" + g.sifra + ".png";
+                        putanja = "/slike/" + g.sifra + ".png";
                     }
                     vrati.Add(new SlikaDTO()
                     {
@@ -533,7 +533,7 @@ namespace GalerijaWebApi.Controllers
 
 
                 string dir = Path.Combine(Directory.GetCurrentDirectory()
-                    + ds + "wwwroot" + ds + "slike" + ds + "slike");
+                    + ds + "wwwroot" + ds + "slike");
 
 
                 if (!System.IO.Directory.Exists(dir))
