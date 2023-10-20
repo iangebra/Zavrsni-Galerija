@@ -30,15 +30,15 @@ namespace GalerijaWebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var komentari = _context.Komentar.Include(k=>k.Slika).ToList();
-            if (komentari == null || komentari.Count == 0)
+            var komentar = _context.Komentar.Include(k=>k.Slika).ToList();
+            if (komentar == null || komentar.Count == 0)
             {
                 return new EmptyResult();
             }
 
             List<KomentarDTO> vrati = new();
 
-            komentari.ForEach(p =>
+            komentar.ForEach(p =>
             {
                
                 var pdto = new KomentarDTO()
