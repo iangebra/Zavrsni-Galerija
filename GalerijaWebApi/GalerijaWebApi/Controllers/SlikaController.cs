@@ -157,6 +157,7 @@ namespace GalerijaWebApi.Controllers
                     Album = album,
                     Datum = slikaDTO.Datum,
                     Lokacija = lokacija
+                    
 
                 };
 
@@ -166,6 +167,38 @@ namespace GalerijaWebApi.Controllers
                 slikaDTO.Sifra = g.sifra;
                 slikaDTO.Album = album.naslov;
                 slikaDTO.Lokacija = lokacija.naziv;
+
+
+                // zapisati sliku na disk
+                try
+                {
+                    var ds = Path.DirectorySeparatorChar;
+
+
+
+
+                    string dir = Path.Combine(Directory.GetCurrentDirectory()
+                        + ds + "wwwroot" + ds + "slike");
+
+
+                    if (!System.IO.Directory.Exists(dir))
+                    {
+                        System.IO.Directory.CreateDirectory(dir);
+                    }
+
+
+                    var putanja = Path.Combine(dir + ds + g.sifra + ".png");
+
+
+
+                    System.IO.File.WriteAllBytes(putanja, Convert.FromBase64String(slikaDTO.Base64));
+
+                }
+                catch (Exception e)
+                {
+
+                }
+
 
                 return Ok(slikaDTO);
 
@@ -247,7 +280,7 @@ namespace GalerijaWebApi.Controllers
         /// <summary>
         /// Briše sliku iz baze
         /// </summary>
-       
+
         [HttpDelete]
         [Route("{sifra:int}")]
         [Produces("application/json")]
@@ -486,7 +519,7 @@ namespace GalerijaWebApi.Controllers
                         sifra = p.sifra,
                         sadrzaj = p.sadrzaj,
                         Slika = p.Slika?.Naslov,
-                        Datum=p.Datum
+                        Datum = p.Datum
 
                     });
                 });

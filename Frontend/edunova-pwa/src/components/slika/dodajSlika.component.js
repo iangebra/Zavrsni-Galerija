@@ -29,7 +29,6 @@ export default class DodajSlika extends Component {
       sifraAlbum:0,
       lokacija: [],
       sifraLokacija:0
-      
     }
 
     
@@ -47,7 +46,7 @@ export default class DodajSlika extends Component {
     const odgovor = await SlikaDataService.post(slika);
     if(odgovor.ok){
       // routing na smjerovi
-      window.location.href='/slike';
+     // window.location.href='/slike';
     }else{
       // pokaži grešku
       console.log(odgovor);
@@ -100,13 +99,15 @@ export default class DodajSlika extends Component {
     const podaci = new FormData(e.target);
     console.log(podaci.get('datum'));    
     let datum = moment.utc(podaci.get('datum'));
-    console.log(datum);
+    console.log(this.state.trenutnaSlika);
+
 
     this.dodajSlika({
       naslov: podaci.get('naslov'),
       datum: datum,
       sifraAlbum: this.state.sifraAlbum,
-      sifraLokacija: this.state.sifraLokacija
+      sifraLokacija: this.state.sifraLokacija,
+      base64: this.state.trenutnaSlika
     });
     
   }
@@ -143,11 +144,12 @@ spremiSlikuAkcija = () =>{
   const { slika} = this.state;
   
   
+  
 
   this.spremiSliku(slika.sifra,slikaZaServer); 
 };
 
-
+/*
 async spremiSliku(sifra,slika){
 
   let base64 = slika;
@@ -166,7 +168,7 @@ if(odgovor.ok){
 }
 
 }
-
+*/
 
   render() { 
     const { albumi} = this.state;
@@ -236,7 +238,7 @@ if(odgovor.ok){
               
 
             
-            <Col key="2" sm={12} lg={6} md={6}>
+            <Col key="3" sm={12} lg={6} md={6}>
             <input type="file" onChange={this.onChange} />
 
              <input type="button" onClick={this.spremiSlikuAkcija} value={"Spremi sliku"} />

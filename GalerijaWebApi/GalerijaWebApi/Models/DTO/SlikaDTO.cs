@@ -12,6 +12,6 @@
         public int SifraLokacija { get; set; }
 
         public string? Slika { get; set; }
-
+        public string? Base64 { get; set; }
     }
 }

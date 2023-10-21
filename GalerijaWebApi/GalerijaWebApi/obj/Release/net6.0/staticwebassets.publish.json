@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "IagU4UrFyNAqmNIihaIOBLiJXwENLjh4fYnPAUz9Nrk=",
+  "Hash": "78JDWRwr3lKk+tNAD3YcF+zQkd/wm3ZJ2L+uzbNqaaU=",
   "Source": "GalerijaWebApi",
   "BasePath": "_content/GalerijaWebApi",
   "Mode": "Default",
@@ -289,12 +289,12 @@
       "OriginalItemSpec": "wwwroot\\static\\js\\787.2d0ebaa6.chunk.js.map"
     },
     {
-      "Identity": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\js\\main.87eb9e88.js",
+      "Identity": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\js\\main.54e08f4b.js",
       "SourceId": "GalerijaWebApi",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\",
       "BasePath": "_content/GalerijaWebApi",
-      "RelativePath": "static/js/main.87eb9e88.js",
+      "RelativePath": "static/js/main.54e08f4b.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -303,15 +303,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\static\\js\\main.87eb9e88.js"
+      "OriginalItemSpec": "wwwroot\\static\\js\\main.54e08f4b.js"
     },
     {
-      "Identity": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\js\\main.87eb9e88.js.LICENSE.txt",
+      "Identity": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\js\\main.54e08f4b.js.LICENSE.txt",
       "SourceId": "GalerijaWebApi",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\",
       "BasePath": "_content/GalerijaWebApi",
-      "RelativePath": "static/js/main.87eb9e88.js.LICENSE.txt",
+      "RelativePath": "static/js/main.54e08f4b.js.LICENSE.txt",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -320,15 +320,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\static\\js\\main.87eb9e88.js.LICENSE.txt"
+      "OriginalItemSpec": "wwwroot\\static\\js\\main.54e08f4b.js.LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\js\\main.87eb9e88.js.map",
+      "Identity": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\js\\main.54e08f4b.js.map",
       "SourceId": "GalerijaWebApi",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\",
       "BasePath": "_content/GalerijaWebApi",
-      "RelativePath": "static/js/main.87eb9e88.js.map",
+      "RelativePath": "static/js/main.54e08f4b.js.map",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -337,7 +337,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\static\\js\\main.87eb9e88.js.map"
+      "OriginalItemSpec": "wwwroot\\static\\js\\main.54e08f4b.js.map"
     },
     {
       "Identity": "C:\\Users\\Ivan\\Documents\\GitHub\\Zavrsni-Galerija\\GalerijaWebApi\\GalerijaWebApi\\wwwroot\\static\\media\\logo.d5d8ce4611dbfa462b4205a01fc08ae9.svg",
