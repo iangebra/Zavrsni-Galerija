@@ -9,6 +9,9 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Link } from "react-router-dom";
 import moment from 'moment';
+import Cropper from "react-cropper";
+import "cropperjs/dist/cropper.css";
+import { Image } from "react-bootstrap";
 
 
 
@@ -50,6 +53,14 @@ export default class DodajSlika extends Component {
       console.log(odgovor);
     }
   }
+
+  _crop() {
+    // image in dataUrl
+   // console.log(this.cropper.getCroppedCanvas().toDataURL());
+   this.setState({
+    slikaZaServer: this.cropper.getCroppedCanvas().toDataURL()
+  });
+}
 
 
   async dohvatiAlbumi() {
@@ -100,13 +111,75 @@ export default class DodajSlika extends Component {
     
   }
 
+  onCropperInit(cropper) {
+    this.cropper = cropper;
+}
+
+onChange = (e) => {
+  e.preventDefault();
+  let files;
+  if (e.dataTransfer) {
+    files = e.dataTransfer.files;
+  } else if (e.target) {
+    files = e.target.files;
+  }
+  const reader = new FileReader();
+  reader.onload = () => {
+    this.setState({
+      image: reader.result
+    });
+  };
+  try {
+    reader.readAsDataURL(files[0]);
+  } catch (error) {
+    
+  }
+  
+}
+
+
+spremiSlikuAkcija = () =>{
+  const { slikaZaServer} = this.state;
+  const { slika} = this.state;
+  
+  
+
+  this.spremiSliku(slika.sifra,slikaZaServer); 
+};
+
+
+async spremiSliku(sifra,slika){
+
+  let base64 = slika;
+  base64=base64.replace('data:image/png;base64,', '');
+  const odgovor = await  SlikaDataService.postaviSliku(sifra,{
+    base64: base64
+  });
+if(odgovor.ok){
+  
+  this.setState({
+    trenutnaSlika: slika
+  });
+}else{
+  // pokaži grešku
+  console.log(odgovor);
+}
+
+}
+
 
   render() { 
     const { albumi} = this.state;
     const { lokacija} = this.state;
+    const { image} = this.state;   
+    const { slikaZaServer} = this.state;
+    const { trenutnaSlika} = this.state;
     return (
     <Container>
+
+      
         <Form onSubmit={this.handleSubmit}>
+          
 
 
           <Form.Group className="mb-3" controlId="naslov">
@@ -151,8 +224,42 @@ export default class DodajSlika extends Component {
             <Button variant="primary" className="gumb" type="submit">
               Dodaj sliku
             </Button>
-            </Col>
+            </Col> 
+            <Col key="1" sm={12} lg={6} md={6}>
+                Trenutna slika<br />
+                <Image src={trenutnaSlika} className="slika"/>
+                </Col>          
+                <Col key="2" sm={12} lg={6} md={6}>
+                  Nova slika<br />
+                <Image src={slikaZaServer} className="slika"/>
+                </Col>
+              
+
+            
+            <Col key="2" sm={12} lg={6} md={6}>
+            <input type="file" onChange={this.onChange} />
+
+             <input type="button" onClick={this.spremiSlikuAkcija} value={"Spremi sliku"} />
+
+                <Cropper
+                    src={image}
+                    style={{ height: 400, width: "100%" }}
+                    initialAspectRatio={1.5}
+                    guides={true}
+                    viewMode={1}
+                    minCropBoxWidth={50}
+                    minCropBoxHeight={50}
+                    cropBoxResizable={false}
+                    background={false}
+                    responsive={true}
+                    checkOrientation={false} 
+                    crop={this._crop.bind(this)}
+                    onInitialized={this.onCropperInit.bind(this)}
+                />
+        </Col>
+            
           </Row>
+          
          
           
         </Form>

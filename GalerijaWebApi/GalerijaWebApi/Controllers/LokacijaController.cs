@@ -50,7 +50,7 @@ namespace GalerijaWebApi.Controllers
         /// Dodavanje nove lokacije
         /// </summary>
         [HttpPost]
-        public IActionResult Post(Lokacija lokacija)
+        public IActionResult Post(Lokacija Lokacija)
         {
             if (!ModelState.IsValid)
             {
@@ -59,9 +59,9 @@ namespace GalerijaWebApi.Controllers
 
             try
             {
-                _context.lokacija.Add(lokacija);
+                _context.lokacija.Add(Lokacija);
                 _context.SaveChanges();
-                return StatusCode(StatusCodes.Status201Created, lokacija);
+                return StatusCode(StatusCodes.Status201Created, Lokacija);
             }
             catch (Exception ex)
             {

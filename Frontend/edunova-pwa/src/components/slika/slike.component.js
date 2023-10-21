@@ -64,7 +64,7 @@ export default class Slike extends Component {
       <Table striped bordered hover responsive>
               <thead>
                 <tr>
-                <th>Slika</th>
+                <th width="20%">Slika</th>
                   <th>Naslov</th>
                   <th>Datum</th>
                   <th>Album</th>
@@ -78,7 +78,7 @@ export default class Slike extends Component {
               {slike && slike.map((slika,index) => (
                 
                 <tr key={index}>
-                   <td> <img src={slika.slika} /> </td>
+                   <td width="20%"> <img src={slika.slika} /> </td>
                   
                   <td>{slika.naslov}</td>
                   <td>{slika.datum}</td>

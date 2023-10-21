@@ -73,10 +73,10 @@ export default class Slike extends Component {
                   <Card.Text>
                     {p.album}
                   </Card.Text>
-                  <Row>
-                      
-                     
-                    </Row>
+                  <Card.Text>Lokacija:&nbsp;
+                    {p.lokacija}
+                  </Card.Text>
+                 
                 </Card.Body>
               </Card>
             </Col>

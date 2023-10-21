@@ -144,7 +144,7 @@ namespace GalerijaWebApi.Controllers
             {
 
                 var album = _context.album.Find(slikaDTO.SifraAlbum);
-                var lokacija = _context.lokacija.Find(slikaDTO.SifraAlbum);
+                var lokacija = _context.lokacija.Find(slikaDTO.SifraLokacija);
 
                 if (album == null)
                 {
@@ -517,8 +517,8 @@ namespace GalerijaWebApi.Controllers
                 return BadRequest(); //400
             }
 
-            var album = _context.album.Find(sifra);
-            if (album == null)
+            var slika = _context.Slika.Find(sifra);
+            if (slika == null)
             {
                 return BadRequest(); //400
             }

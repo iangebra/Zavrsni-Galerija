@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SlikaDataService from "../../services/slika.service";
 import AlbumDataService from "../../services/album.service";
+import LokacijaDataService from "../../services/lokacija.service";
 import TagDataService from "../../services/tag.service";
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
@@ -27,6 +28,7 @@ export default class PromjeniSlika extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.albumi = this.dohvatiAlbumi();
     this.tagovi = this.dohvatiTagovi();
+    this.lokacija = this.dohvatiLokacija();
     this.obrisiTag = this.obrisiTag.bind(this);
     this.traziTag = this.traziTag.bind(this);
     this.dodajTag = this.dodajTag.bind(this);
@@ -37,7 +39,9 @@ export default class PromjeniSlika extends Component {
       slika: {},
       albumi: [],
       tagovi: [],
+      lokacija: [],
       sifraAlbum:0,
+      sifraLokacija:0,
       pronadeniTagovi: [],
       trenutnaSlika: ""
     };
@@ -122,7 +126,7 @@ onCropperInit(cropper) {
 
 
   async dohvatiAlbumi() {
-   // console.log('Dohvaćm albumove');
+
     await AlbumDataService.get()
       .then(response => {
         this.setState({
@@ -136,6 +140,22 @@ onCropperInit(cropper) {
         console.log(e);
       });
   }
+
+  async dohvatiLokacija() {
+    
+     await LokacijaDataService.get()
+       .then(response => {
+         this.setState({
+           lokacija: response.data,
+           sifraLokacija: response.data[0].sifra
+         });
+ 
+        // console.log(response.data);
+       })
+       .catch(e => {
+         console.log(e);
+       });
+   }
 
   async dohvatiTagovi() {
     let href = window.location.href;
@@ -199,18 +219,13 @@ onCropperInit(cropper) {
     this.promjeniSlika({
       naslov: podaci.get('naslov'),
       datum: datum,
-      sifraAlbum: this.state.sifraAlbum
+      sifraAlbum: this.state.sifraAlbum,
+      sifraLokacija: this.state.sifraLokacija
     });
     
   }
 
-  _crop() {
-    // image in dataUrl
-   // console.log(this.cropper.getCroppedCanvas().toDataURL());
-   this.setState({
-    slikaZaServer: this.cropper.getCroppedCanvas().toDataURL()
-  });
-}
+  
 
 onCropperInit(cropper) {
     this.cropper = cropper;
@@ -242,7 +257,7 @@ onChange = (e) => {
 spremiSlikuAkcija = () =>{
   const { slikaZaServer} = this.state;
   const { slika} = this.state;
-  const { trenutnaSlika} = this.state;
+  
   
 
   this.spremiSliku(slika.sifra,slikaZaServer); 
@@ -269,6 +284,7 @@ if(odgovor.ok){
 }
   render() { 
     const { albumi} = this.state;
+    const { lokacija} = this.state;
     const { slika} = this.state;
     const { tagovi} = this.state;
     const { image} = this.state;
@@ -312,6 +328,18 @@ if(odgovor.ok){
                 </Form.Select>
               </Form.Group>
 
+              <Form.Group className="mb-3" controlId="lokacija">
+                <Form.Label>Lokacija</Form.Label>
+                <Form.Select defaultValue={slika.sifraLokacija}  onChange={e => {
+                  this.setState({ sifraLokacija: e.target.value});
+                }}>
+                {lokacija && lokacija.map((lokacija,index) => (
+                      <option key={index} value={lokacija.sifra}>{lokacija.naziv}</option>
+
+                ))}
+                </Form.Select>
+              </Form.Group>
+
               <Row>
               <Col key="1" sm={12} lg={6} md={6}>
                 Trenutna slika<br />
@@ -332,7 +360,7 @@ if(odgovor.ok){
                 <Cropper
                     src={image}
                     style={{ height: 400, width: "100%" }}
-                    initialAspectRatio={1}
+                    initialAspectRatio={1.5}
                     guides={true}
                     viewMode={1}
                     minCropBoxWidth={50}
