@@ -15,6 +15,8 @@ import { FaTrash } from 'react-icons/fa';
 import Cropper from "react-cropper";
 import "cropperjs/dist/cropper.css";
 import { Image } from "react-bootstrap";
+import KomentarDataService from "../../services/tag.service";
+
 
 import { AsyncTypeahead } from 'react-bootstrap-typeahead';
 
@@ -27,22 +29,22 @@ export default class PromjeniSlika extends Component {
     this.promjeniSlika = this.promjeniSlika.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.albumi = this.dohvatiAlbumi();
-    this.tagovi = this.dohvatiTagovi();
+    this.tags = this.dohvatiTags();
+    this.komentari = this.dohvatiKomentar();
     this.lokacija = this.dohvatiLokacija();
-    this.obrisiTag = this.obrisiTag.bind(this);
-    this.traziTag = this.traziTag.bind(this);
-    this.dodajTag = this.dodajTag.bind(this);
+    
     this.spremiSliku = this.spremiSliku.bind(this);
 
 
     this.state = {
       slika: {},
       albumi: [],
-      tagovi: [],
+      tags: [],
+      komentari: [],
       lokacija: [],
       sifraAlbum:0,
       sifraLokacija:0,
-      pronadeniTagovi: [],
+      pronadeniTags: [],
       trenutnaSlika: ""
     };
   }
@@ -88,43 +90,6 @@ export default class PromjeniSlika extends Component {
     }
   }
 
-  handleSubmit(e) {
-    // Prevent the browser from reloading the page
-    e.preventDefault();
-
-    // Read the form data
-    const podaci = new FormData(e.target);
-    //Object.keys(formData).forEach(fieldName => {
-    // console.log(fieldName, formData[fieldName]);
-    //})
-    
-    //console.log(podaci.get('verificiran'));
-    // You can pass formData as a service body directly:
-
-    this.promjeniSlika({
-      naslov: podaci.get('naslov'),
-      album: podaci.get('album'),
-      lokacija: podaci.get('lokacija'),
-      slika: podaci.get('slika')      
-    });
-    
-  }
-
-  _crop() {
-    // image in dataUrl
-   // console.log(this.cropper.getCroppedCanvas().toDataURL());
-   this.setState({
-    slikaZaServer: this.cropper.getCroppedCanvas().toDataURL()
-  });
-}
-
-onCropperInit(cropper) {
-    this.cropper = cropper;
-}
-
-
-
-
   async dohvatiAlbumi() {
 
     await AlbumDataService.get()
@@ -157,13 +122,13 @@ onCropperInit(cropper) {
        });
    }
 
-  async dohvatiTagovi() {
+  async dohvatiTags() {
     let href = window.location.href;
     let niz = href.split('/'); 
-    await SlikaDataService.getTagovi(niz[niz.length-1])
+    await SlikaDataService.getTags(niz[niz.length-1])
        .then(response => {
          this.setState({
-           tag: response.data
+           tags: response.data
          });
  
         // console.log(response.data);
@@ -172,42 +137,24 @@ onCropperInit(cropper) {
          console.log(e);
        });
    }
-
+   async dohvatiKomentar() {
+    let href = window.location.href;
+    let niz = href.split('/'); 
+    await SlikaDataService.getKomentari(niz[niz.length-1])
+       .then(response => {
+         this.setState({
+           komentari: response.data
+         });
+ 
+        // console.log(response.data);
+       })
+       .catch(e => {
+         console.log(e);
+       });
+   }
    
 
-   async traziTag( uvjet) {
-
-    await TagDataService.traziTag( uvjet)
-       .then(response => {
-         this.setState({
-          pronadeniTagovi: response.data
-         });
- 
-        // console.log(response.data);
-       })
-       .catch(e => {
-         console.log(e);
-       });
-   }
-
-   async obrisiTag(slika, tag){
-    const odgovor = await SlikaDataService.obrisiTag(slika, tag);
-    if(odgovor.ok){
-     this.dohvatiTagovi();
-    }else{
-     //this.otvoriModal();
-    }
-   }
-
-   async dodajTag(slika, tag){
-    const odgovor = await SlikaDataService.dodajTag(slika, tag);
-    if(odgovor.ok){
-     this.dohvatiTagovi();
-    }else{
-    //this.otvoriModal();
-    }
-   }
- 
+     
 
   handleSubmit(e) {
     e.preventDefault();
@@ -225,7 +172,13 @@ onCropperInit(cropper) {
     
   }
 
-  
+  _crop() {
+    // image in dataUrl
+   // console.log(this.cropper.getCroppedCanvas().toDataURL());
+   this.setState({
+    slikaZaServer: this.cropper.getCroppedCanvas().toDataURL()
+  });
+}
 
 onCropperInit(cropper) {
     this.cropper = cropper;
@@ -282,28 +235,18 @@ if(odgovor.ok){
 }
 
 }
+
+
+
   render() { 
     const { albumi} = this.state;
     const { lokacija} = this.state;
     const { slika} = this.state;
-    const { tagovi} = this.state;
-    const { image} = this.state;
-    const { pronadeniTagovi} = this.state;
+    const { tags} = this.state;
+    const { image} = this.state;    
     const { slikaZaServer} = this.state;
-    const { trenutnaSlika} = this.state;
-
-
-    const obradiTrazenje = (uvjet) => {
-      this.traziTag( uvjet);
-    };
-
-    const odabraniTag = (tag) => {
-      //console.log(grupa.sifra + ' - ' + polaznik[0].sifra);
-      if(tag.length>0){
-        this.dodajTag(slika.sifra, tag[0].sifra);
-      }
-     
-    };
+    const { trenutnaSlika} = this.state;  
+    const { komentari} = this.state;    
 
     return (
     <Container>
@@ -359,8 +302,7 @@ if(odgovor.ok){
 
                 <Cropper
                     src={image}
-                    style={{ height: 400, width: "100%" }}
-                    initialAspectRatio={1.5}
+                    style={{ height: 400, width: "100%" }}                    
                     guides={true}
                     viewMode={1}
                     minCropBoxWidth={50}
@@ -382,7 +324,42 @@ if(odgovor.ok){
                 <Form.Control type="date" name="datum" placeholder="" defaultValue={slika.datum}  />
               </Form.Group>                    
 
-
+              <Table striped bordered hover responsive>
+              <thead>
+                <tr>
+                  <th>Tagovi na slici</th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+              {tags && tags.map((tag,index) => (
+                
+                <tr key={index}>
+                  <td > {tag.naziv}</td>
+                 
+                </tr>
+                ))
+              }
+              </tbody>
+            </Table>    
+            <Table striped bordered hover responsive>
+              <thead>
+                <tr>
+                  <th>Komentari na slici</th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+              {komentari && komentari.map((komentar,index) => (
+                
+                <tr key={index}>
+                  <td > {komentar.sadrzaj}</td>
+                 
+                </tr>
+                ))
+              }
+              </tbody>
+            </Table>    
 
               <Row>
                 <Col>
@@ -395,50 +372,9 @@ if(odgovor.ok){
                 </Col>
               </Row>
           
-          <Col key="2" sm={12} lg={6} md={6} className="tagoviSlika">
-          <Form.Group className="mb-3" controlId="uvjet">
-                <Form.Label>Traži tag</Form.Label>
-                
-          <AsyncTypeahead
-            className="autocomplete"
-            id="uvjet"
-            emptyLabel="Nema rezultata"
-            searchText="Tražim..."
-            labelKey={(tag) => `${tag.naziv}`}
-            minLength={3}
-            options={pronadeniTagovi}
-            onSearch={obradiTrazenje}
-            placeholder="dio naziva"
-            renderMenuItemChildren={(tag) => (
-              <>
-                <span>{tag.naziv}</span>
-              </>
-            )}
-            onChange={odabraniTag}
-          />
-          </Form.Group>
-          <Table striped bordered hover responsive>
-              <thead>
-                <tr>
-                  <th>Tag</th>
-                  <th>Akcija</th>
-                </tr>
-              </thead>
-              <tbody>
-              {tagovi && tagovi.map((tag,index) => (
-                
-                <tr key={index}>
-                  <td > {tag.naziv}</td>
-                  <td>
-                  <Button variant="danger"   onClick={() => this.obrisiTag(slika.sifra, tag.sifra)}><FaTrash /></Button>
-                    
-                  </td>
-                </tr>
-                ))
-              }
-              </tbody>
-            </Table>    
-          </Col>
+          
+          
+          
           </Form>
 
 

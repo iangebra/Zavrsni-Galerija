@@ -7,7 +7,7 @@ import NadzornaPloca from './components/nadzornaploca.component';
 import Albumi from './components/album/albumi.component';
 import DodajAlbum from './components/album/dodajAlbum.component';
 import PromjeniAlbum from './components/album/promjeniAlbum.component';
-import Tagovi from './components/tag/tag.component';
+import Tags from './components/tag/tags.component';
 import DodajTag from './components/tag/dodajTag.component';
 import PromjeniTag from './components/tag/promjeniTag.component';
 import PromjeniLokaciju from './components/lokacija/promjeniLokaciju';
@@ -16,7 +16,6 @@ import Lokacija from './components/lokacija/lokacija.component';
 import Slike from './components/slika/slike.component';
 import DodajSlika from './components/slika/dodajSlika.component';
 import PromjeniSlika from './components/slika/promjeniSlika.component';
-import Slikeizlistaj from './components/slika/slikeizlistaj.component';
 import Komentar from './components/komentar/komentar.component';
 import DodajKomentar from './components/komentar/dodajKomentar.component';
 
@@ -32,16 +31,15 @@ export default function App() {
         <Route path='/albumi' element={<Albumi />} />
         <Route path="albumi/dodaj" element={<DodajAlbum />} />        
         <Route path="/albumi/:sifra" element={<PromjeniAlbum />} />
-        <Route path="/tag" element={<Tagovi />} />
-          <Route path="/tag/dodaj" element={<DodajTag />} />
-          <Route path="/tag/:sifra" element={<PromjeniTag />} />
+        <Route path="/tags" element={<Tags />} />
+          <Route path="/tags/dodaj" element={<DodajTag />} />
+          <Route path="/tags/:sifra" element={<PromjeniTag />} />
           <Route path='/lokacija' element={<Lokacija />} />
         <Route path="lokacija/dodaj" element={<DodajLokaciju />} />        
         <Route path="/lokacija/:sifra" element={<PromjeniLokaciju />} />
         <Route path="/slike" element={<Slike />} />
         <Route path="/slike/dodaj" element={<DodajSlika />} />
-        <Route path="/slike/:sifra" element={<PromjeniSlika />} />
-        <Route path="/slikeizlistaj" element={<Slikeizlistaj />} />
+        <Route path="/slike/:sifra" element={<PromjeniSlika />} />    
         <Route path="/komentar" element={<Komentar />} />
           <Route path="/komentar/dodaj" element={<DodajKomentar />} />
       </Routes>

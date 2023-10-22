@@ -20,7 +20,7 @@ class TagDataService {
     //console.log(smjer);
     const odgovor = await http.post('/tag',tag)
        .then(response => {
-         return {ok:true, poruka: 'Unio taga'}; // return u odgovor
+         return {ok:true, poruka: 'Unio tag'}; // return u odgovor
        })
        .catch(error => {
         console.log(error.response);
@@ -33,7 +33,7 @@ class TagDataService {
   async put(sifra,tag){
     const odgovor = await http.put('/tag/' + sifra,tag)
        .then(response => {
-         return {ok:true, poruka: 'Promjenio taga'}; // return u odgovor
+         return {ok:true, poruka: 'Promjenio tag'}; // return u odgovor
        })
        .catch(error => {
         console.log(error.response);

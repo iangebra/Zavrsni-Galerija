@@ -10,11 +10,16 @@ class SlikaDataService {
     return await http.get('/slika/' + sifra);
   }
 
-  async getTagovi(sifra) {
+  async getTags(sifra) {
     // console.log(sifra);
-     return await http.get('/slika/' + sifra + '/tagovi');
+     return await http.get('/slika/' + sifra + '/tags');
    }
  
+
+   async getKomentari(sifra) {
+    // console.log(sifra);
+     return await http.get('/slika/' + sifra + '/komentari');
+   }
 
 
   async post(slika){

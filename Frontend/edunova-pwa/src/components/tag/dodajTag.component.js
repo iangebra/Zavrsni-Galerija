@@ -15,11 +15,11 @@ export default class DodajTag extends Component {
     this.dodajTag = this.dodajTag.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  async dodajTag(album) {
-    const odgovor = await TagDataService.post(album);
+  async dodajTag(slika) {
+    const odgovor = await TagDataService.post(slika);
     if(odgovor.ok){
       // routing na tagove
-      window.location.href='/tag';
+      window.location.href='/tags';
     }else{
       // pokaži grešku
       console.log(odgovor);
@@ -53,7 +53,7 @@ export default class DodajTag extends Component {
 
           <Row>
             <Col>
-              <Link className="btn btn-danger gumb" to={`/tag`}>Odustani</Link>
+              <Link className="btn btn-danger gumb" to={`/tags`}>Odustani</Link>
             </Col>
             <Col>
             <Button variant="primary" className="gumb" type="submit">

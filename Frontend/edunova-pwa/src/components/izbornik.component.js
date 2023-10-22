@@ -23,12 +23,9 @@ export default class Izbornik extends Component{
                   <NavDropdown title="Padajuci" id="basic-nav-dropdown">
                   <NavDropdown.Item href="/slike">
                       Slike
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="/slikeizlistaj">
-                      Slikeizlistaj
-                    </NavDropdown.Item>
+                    </NavDropdown.Item>                    
                     <NavDropdown.Item href="/albumi">Albumi</NavDropdown.Item>
-                    <NavDropdown.Item href="/tag">
+                    <NavDropdown.Item href="/tags">
                       Tagovi
                     </NavDropdown.Item>
                     <NavDropdown.Item href="/lokacija">

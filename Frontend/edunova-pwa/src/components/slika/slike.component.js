@@ -61,16 +61,16 @@ export default class Slike extends Component {
     <Container>
       <a href="/slike/dodaj" className="btn btn-success gumb">Dodaj novu sliku</a>
      
-      <Table striped bordered hover responsive>
+      <table class="table table-fixed table-striped table-bordered
+                table-sm same-col-widths">
               <thead>
-                <tr>
-                <th width="20%">Slika</th>
+              <tr class="same-col-widths">
+                <th>Slika</th>
                   <th>Naslov</th>
                   <th>Datum</th>
                   <th>Album</th>
-                  <th>Lokacija</th>
-                  <th>Tags</th>
-                  <th>Komentari</th>
+                  <th>Lokacija</th>                  
+                  <th>Akcija</th>
                  
                 </tr>
               </thead>
@@ -78,18 +78,15 @@ export default class Slike extends Component {
               {slike && slike.map((slika,index) => (
                 
                 <tr key={index}>
-                   <td width="20%"> <img src={slika.slika} /> </td>
+                   <td> <img src={slika.slika} /> </td>
                   
                   <td>{slika.naslov}</td>
                   <td>{slika.datum}</td>
                   <td>{slika.album}</td>
                   <td>{slika.lokacija}</td>
-                  <td>{slika.tag}</td>
-                  <td>{slika.komentar}</td>
+                               
                   
-                  
-                    
-                  
+                 
                   <td>
                     
                         <Link className="btn btn-primary gumb" to={`/slike/${slika.sifra}`}><FaEdit /></Link>
@@ -104,7 +101,7 @@ export default class Slike extends Component {
                 ))
               }
               </tbody>
-            </Table>     
+            </table>     
 
              <Modal show={this.state.prikaziModal} onHide={this.zatvoriModal}>
               <Modal.Header closeButton>

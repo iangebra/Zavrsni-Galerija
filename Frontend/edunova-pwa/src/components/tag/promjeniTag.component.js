@@ -50,7 +50,7 @@ export default class PromjeniTag extends Component {
     let niz = href.split('/'); 
     const odgovor = await TagDataService.put(niz[niz.length-1],tag);
     if(odgovor.ok){
-      window.location.href='/tag';
+      window.location.href='/tags';
     }else{
       // pokaži grešku
       console.log(odgovor);
@@ -96,11 +96,11 @@ export default class PromjeniTag extends Component {
 
           <Row>
             <Col>
-              <Link className="btn btn-danger gumb" to={`/tag`}>Odustani</Link>
+              <Link className="btn btn-danger gumb" to={`/tags`}>Odustani</Link>
             </Col>
             <Col>
             <Button variant="primary" className="gumb" type="submit">
-              Promjeni taga
+              Promjeni tag
             </Button>
             </Col>
           </Row>

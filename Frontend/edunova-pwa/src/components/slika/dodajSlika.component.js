@@ -97,17 +97,14 @@ export default class DodajSlika extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const podaci = new FormData(e.target);
-    console.log(podaci.get('datum'));    
     let datum = moment.utc(podaci.get('datum'));
-    console.log(this.state.trenutnaSlika);
-
 
     this.dodajSlika({
       naslov: podaci.get('naslov'),
       datum: datum,
       sifraAlbum: this.state.sifraAlbum,
       sifraLokacija: this.state.sifraLokacija,
-      base64: this.state.trenutnaSlika
+      base64: this.state.slikaZaServer
     });
     
   }
@@ -138,37 +135,6 @@ onChange = (e) => {
   
 }
 
-
-spremiSlikuAkcija = () =>{
-  const { slikaZaServer} = this.state;
-  const { slika} = this.state;
-  
-  
-  
-
-  this.spremiSliku(slika.sifra,slikaZaServer); 
-};
-
-/*
-async spremiSliku(sifra,slika){
-
-  let base64 = slika;
-  base64=base64.replace('data:image/png;base64,', '');
-  const odgovor = await  SlikaDataService.postaviSliku(sifra,{
-    base64: base64
-  });
-if(odgovor.ok){
-  
-  this.setState({
-    trenutnaSlika: slika
-  });
-}else{
-  // pokaži grešku
-  console.log(odgovor);
-}
-
-}
-*/
 
   render() { 
     const { albumi} = this.state;
@@ -241,8 +207,7 @@ if(odgovor.ok){
             <Col key="3" sm={12} lg={6} md={6}>
             <input type="file" onChange={this.onChange} />
 
-             <input type="button" onClick={this.spremiSlikuAkcija} value={"Spremi sliku"} />
-
+           
                 <Cropper
                     src={image}
                     style={{ height: 400, width: "100%" }}
@@ -272,4 +237,3 @@ if(odgovor.ok){
     );
   }
 }
-

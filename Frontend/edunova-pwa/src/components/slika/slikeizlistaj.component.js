@@ -64,9 +64,9 @@ export default class Slike extends Component {
      <Row>
       { slike && slike.map((p) => (
            
-           <Col key={p.sifra} sm={12} lg={3} md={3}>
+           <Col key={p.sifra} sm={12} lg={4} md={4}>
 
-              <Card style={{ width: '18rem' }}>
+              <Card style={{ width: '25rem' }}>
               <Card.Img variant="top" src={p.slika} />
                 <Card.Body>
                   <Card.Title>{p.naslov} </Card.Title>

@@ -62,7 +62,7 @@ export default class DodajKomentar extends Component {
 
     this.dodajKomentar({
       sadrzaj: podaci.get('sadrzaj'),
-      date: podaci.get('date'),
+      Datum: podaci.get('Datum'),
       sifraSlika: this.state.sifraSlika, 
     });
     
@@ -83,9 +83,9 @@ export default class DodajKomentar extends Component {
 
 
         
-          <Form.Group className="mb-3" controlId="date">
+          <Form.Group className="mb-3" controlId="Datum">
             <Form.Label>Datum</Form.Label>
-            <Form.Control type="date" name="date" placeholder="" />
+            <Form.Control type="date" name="Datum" placeholder="" />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="slika">
@@ -119,4 +119,3 @@ export default class DodajKomentar extends Component {
     );
   }
 }
-
