@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
-import logo from '../logo.svg';
+import logo from '../logo.png';
 
 
 export default class Izbornik extends Component{
@@ -19,26 +19,12 @@ export default class Izbornik extends Component{
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
-                  <Nav.Link href="/nadzornaploca">Nadzorna ploča</Nav.Link>
-                  <NavDropdown title="Padajuci" id="basic-nav-dropdown">
-                  <NavDropdown.Item href="/slike">
-                      Slike
-                    </NavDropdown.Item>                    
-                    <NavDropdown.Item href="/albumi">Albumi</NavDropdown.Item>
-                    <NavDropdown.Item href="/tags">
-                      Tagovi
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="/lokacija">
-                      Lokacije
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="/komentar">
-                      Komentari
-                    </NavDropdown.Item>
-                   
-                    <NavDropdown.Item target="_blank" href="/swagger/index.html">
-                      Swagger
-                    </NavDropdown.Item>
-                  </NavDropdown>
+                  <Nav.Link href="/slike">Slike</Nav.Link>
+                  <Nav.Link href="/albumi">Albumi</Nav.Link>
+                  <Nav.Link href="/lokacija">Lokacija</Nav.Link>
+                  <Nav.Link href="/tags">Tagovi</Nav.Link>
+                  <Nav.Link href="/komentar">Komentari</Nav.Link>
+                  <Nav.Link href="/swagger/index.html">Swagger</Nav.Link>                 
                 </Nav>
               </Navbar.Collapse>
             </Container>

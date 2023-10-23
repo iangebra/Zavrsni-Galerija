@@ -103,7 +103,7 @@ namespace GalerijaWebApi.Controllers
             try
             {
 
-                var slika = _context.Slika.Find(dto.SifraSlika);
+                var slika = _context.Slika.Find(dto.sifraSlika);
 
                 if (slika == null)
                 {

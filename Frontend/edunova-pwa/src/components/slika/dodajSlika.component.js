@@ -43,6 +43,7 @@ export default class DodajSlika extends Component {
   
 
   async dodajSlika(slika) {
+    
     const odgovor = await SlikaDataService.post(slika);
     if(odgovor.ok){
       // routing na smjerovi
@@ -53,13 +54,7 @@ export default class DodajSlika extends Component {
     }
   }
 
-  _crop() {
-    // image in dataUrl
-   // console.log(this.cropper.getCroppedCanvas().toDataURL());
-   this.setState({
-    slikaZaServer: this.cropper.getCroppedCanvas().toDataURL()
-  });
-}
+  
 
 
   async dohvatiAlbumi() {
@@ -105,9 +100,21 @@ export default class DodajSlika extends Component {
       sifraAlbum: this.state.sifraAlbum,
       sifraLokacija: this.state.sifraLokacija,
       base64: this.state.slikaZaServer
+      
+      
     });
     
   }
+
+  _crop() {
+    // image in dataUrl
+   // console.log(this.cropper.getCroppedCanvas().toDataURL());
+   this.setState({
+    slikaZaServer: this.cropper.getCroppedCanvas().toDataURL()
+    
+  });
+  
+}
 
   onCropperInit(cropper) {
     this.cropper = cropper;
@@ -134,6 +141,8 @@ onChange = (e) => {
   }
   
 }
+
+
 
 
   render() { 
