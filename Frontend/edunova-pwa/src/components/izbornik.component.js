@@ -20,7 +20,7 @@ export default class Izbornik extends Component{
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
                   <Nav.Link href="/slike">Slike</Nav.Link>
-                  <Nav.Link href="/albumi">Albumi</Nav.Link>
+                  <Nav.Link href="/albumi">Albumi</Nav.Link>                  
                   <Nav.Link href="/lokacija">Lokacija</Nav.Link>
                   <Nav.Link href="/tags">Tagovi</Nav.Link>
                   <Nav.Link href="/komentar">Komentari</Nav.Link>

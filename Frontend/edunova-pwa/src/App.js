@@ -21,6 +21,7 @@ import DodajKomentar from './components/komentar/dodajKomentar.component';
 
 
 
+
 export default function App() {
   return (
     <Router>
@@ -28,7 +29,7 @@ export default function App() {
       <Routes>
         <Route path='/' element={<Pocetna />} />
         <Route path='/nadzornaploca' element={<NadzornaPloca />} />
-        <Route path='/albumi' element={<Albumi />} />
+        <Route path='/albumi' element={<Albumi />} />        
         <Route path="albumi/dodaj" element={<DodajAlbum />} />        
         <Route path="/albumi/:sifra" element={<PromjeniAlbum />} />
         <Route path="/tags" element={<Tags />} />

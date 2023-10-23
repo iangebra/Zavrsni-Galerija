@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 import AlbumDataService from "../../services/album.service";
+import SlikaDataService from "../../services/slika.service";
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Link } from "react-router-dom";
+import Table from 'react-bootstrap/Table';
+
+
+
 
 
 
@@ -13,15 +18,18 @@ export default class PromjeniAlbum extends Component {
 
   constructor(props) {
     super(props);
-
+    
+   
    
     this.album = this.dohvatiAlbum();
     this.PromjeniAlbum = this.PromjeniAlbum.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.slike = this.dohvatiSlike();
     
 
     this.state = {
-      album: {}
+      album: {},
+      slike: []
     };
 
   }
@@ -59,7 +67,21 @@ export default class PromjeniAlbum extends Component {
     }
   }
 
-
+  async dohvatiSlike() {
+    let href = window.location.href;
+    let niz = href.split('/'); 
+    await AlbumDataService.getSlike(niz[niz.length-1])
+       .then(response => {
+         this.setState({
+           slike: response.data
+         });
+ 
+        // console.log(response.data);
+       })
+       .catch(e => {
+         console.log(e);
+       });
+   }
 
   handleSubmit(e) {
     // Prevent the browser from reloading the page
@@ -86,6 +108,7 @@ export default class PromjeniAlbum extends Component {
   render() {
     
    const { album} = this.state;
+   const { slike} = this.state;
 
 
     return (
@@ -116,6 +139,28 @@ export default class PromjeniAlbum extends Component {
             </Col>
           </Row>
         </Form>
+
+     
+          
+          <Table striped bordered hover responsive>
+              <thead>
+                <tr>
+                  <th>Slike u ovom albumu</th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+              {slike && slike.map((slika,index) => (
+                
+                <tr key={index}>
+                  <td > {slika.naslov}</td>
+                  
+                </tr>
+                ))
+              }
+              </tbody>
+            </Table>    
+           
 
 
       

@@ -1,6 +1,10 @@
 ﻿using GalerijaWebApi.Data;
 using GalerijaWebApi.Models;
+using GalerijaWebApi.Models.DTO;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Drawing;
+
 namespace GalerijaWebApi.Controllers
 {
     [ApiController]
@@ -102,10 +106,63 @@ namespace GalerijaWebApi.Controllers
 
         }
 
-        /// <summary>
-        /// Mijenjanje albuma u bazi
-        /// </summary>
-        [HttpPut]
+        [HttpGet]
+        [Route("{sifra:int}/slike")]
+        public IActionResult GetSlike(int sifra)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            if (sifra <= 0)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                var album = _context.album
+                    .Include(g => g.slike)
+                    .FirstOrDefault(g => g.sifra == sifra);
+
+                if (album == null)
+                {
+                    return BadRequest();
+                }
+
+                if (album.slike == null || album.slike.Count == 0)
+                {
+                    return new EmptyResult();
+                }
+                
+               
+                    List<SlikaDTO> vrati = new();
+
+                album.slike.ForEach(p =>
+                {
+                    vrati.Add(new SlikaDTO()
+                    {
+                        Sifra = p.sifra,
+                        Naslov = p.Naslov,
+                        
+
+                    });
+                });
+                return Ok(vrati);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(
+                        StatusCodes.Status503ServiceUnavailable,
+                        ex.Message);
+            }
+        }
+
+            /// <summary>
+            /// Mijenjanje albuma u bazi
+            /// </summary>
+            [HttpPut]
         [Route("{sifra:int}")]
         public IActionResult Put(int sifra, Album Album)
         {

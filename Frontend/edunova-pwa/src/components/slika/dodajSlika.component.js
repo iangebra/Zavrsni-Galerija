@@ -47,7 +47,7 @@ export default class DodajSlika extends Component {
     const odgovor = await SlikaDataService.post(slika);
     if(odgovor.ok){
       // routing na smjerovi
-     // window.location.href='/slike';
+     window.location.href='/slike';
     }else{
       // pokaži grešku
       console.log(odgovor);
@@ -93,13 +93,15 @@ export default class DodajSlika extends Component {
     e.preventDefault();
     const podaci = new FormData(e.target);
     let datum = moment.utc(podaci.get('datum'));
+    let slika = this.state.slikaZaServer;
+    slika=slika.replace('data:image/png;base64,', '');
 
     this.dodajSlika({
       naslov: podaci.get('naslov'),
       datum: datum,
       sifraAlbum: this.state.sifraAlbum,
       sifraLokacija: this.state.sifraLokacija,
-      base64: this.state.slikaZaServer
+      base64: slika
       
       
     });

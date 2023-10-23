@@ -2,10 +2,18 @@ import http from "../http-common";
 
 
 class AlbumDataService{
+  getAll() {
+    return http.get("/album");
+  }
 
     async get(){
         return await http.get('/album');
     }
+
+    async getSlike(sifra) {
+      // console.log(sifra);
+       return await http.get('/album/' + sifra + '/slike');
+     }
 
     async getBySifra(sifra) {
         return await http.get('/album/' + sifra);
