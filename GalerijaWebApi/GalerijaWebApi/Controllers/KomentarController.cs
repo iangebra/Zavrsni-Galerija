@@ -46,7 +46,8 @@ namespace GalerijaWebApi.Controllers
                     sifra = p.sifra,
                     sadrzaj = p.sadrzaj,
                     Slika = p.Slika?.Naslov,
-                    Datum=p.Datum
+                    Datum=p.Datum,
+                    sifraSlika=p.Slika.sifra
                 };
 
                 vrati.Add(pdto);

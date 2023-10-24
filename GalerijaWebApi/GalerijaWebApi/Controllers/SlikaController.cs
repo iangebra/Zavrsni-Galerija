@@ -105,15 +105,26 @@ namespace GalerijaWebApi.Controllers
                 return StatusCode(StatusCodes.Status204NoContent, e); //204
             }
 
+            var ds = Path.DirectorySeparatorChar;
+            string dir = Path.Combine(Directory.GetCurrentDirectory()
+                + ds + "wwwroot" + ds + "slike" + ds);
+
             try
             {
+
+                var putanja = "/slike/prazno.png";
+                if (System.IO.File.Exists(dir + e.sifra + ".png"))
+                {
+                    putanja = "/slike/" + e.sifra + ".png";
+                }
                 return new JsonResult(new SlikaDTO()
                 {
                     Sifra = e.sifra,
                     Naslov = e.Naslov,
                     Datum = e.Datum,
                     SifraAlbum = e.Album == null ? 0 : e.Album.sifra,
-                    Album = e.Album?.naslov
+                    Album = e.Album?.naslov,
+                    Slika=putanja
                 }); //200
 
             }
@@ -155,7 +166,7 @@ namespace GalerijaWebApi.Controllers
                 {
                     Naslov = slikaDTO.Naslov,
                     Album = album,
-                    Datum = slikaDTO.Datum,
+                    Datum = DateTime.Now,
                     Lokacija = lokacija
                     
 
@@ -253,8 +264,7 @@ namespace GalerijaWebApi.Controllers
                 }
 
                 slika.Naslov = slikaDTO.Naslov;
-                slika.Album = album;
-                slika.Datum = slikaDTO.Datum;
+                slika.Album = album;                
                 slika.Lokacija = lokacija;
 
                 _context.Slika.Update(slika);

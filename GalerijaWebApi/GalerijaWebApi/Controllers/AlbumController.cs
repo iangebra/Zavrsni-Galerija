@@ -106,6 +106,8 @@ namespace GalerijaWebApi.Controllers
 
         }
 
+
+
         [HttpGet]
         [Route("{sifra:int}/slike")]
         public IActionResult GetSlike(int sifra)
@@ -135,19 +137,44 @@ namespace GalerijaWebApi.Controllers
                 {
                     return new EmptyResult();
                 }
-                
-               
-                    List<SlikaDTO> vrati = new();
 
-                album.slike.ForEach(p =>
+                var slike = _context.Slika
+                     .Include(g => g.Album)
+                     .Include(g => g.Tags)
+                     .Include(g => g.Lokacija)
+                     .Include(g => g.Komentar)
+                     .ToList();
+
+                if (slike == null || slike.Count == 0)
                 {
+                    return new EmptyResult();
+                }
+                List<SlikaDTO> vrati = new();
+                var ds = Path.DirectorySeparatorChar;
+                string dir = Path.Combine(Directory.GetCurrentDirectory()
+                    + ds + "wwwroot" + ds + "slike" + ds);
+                album.slike.ForEach(g =>
+                {
+                    var putanja = "/slike/prazno.png";
+                    if (System.IO.File.Exists(dir + g.sifra + ".png"))
+                    {
+                        putanja = "/slike/" + g.sifra + ".png";
+                    }
                     vrati.Add(new SlikaDTO()
                     {
-                        Sifra = p.sifra,
-                        Naslov = p.Naslov,
-                        
-
+                        Sifra = g.sifra,
+                        Naslov = g.Naslov,
+                        Album = g.Album.naslov,
+                        Lokacija = g.Lokacija.naziv,
+                        SifraAlbum = g.Album.sifra,
+                        Datum = g.Datum,
+                        SifraLokacija = g.Lokacija.sifra,
+                        Slika = putanja
                     });
+
+                    
+
+                    
                 });
                 return Ok(vrati);
             }
