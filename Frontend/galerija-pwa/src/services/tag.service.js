@@ -12,12 +12,12 @@ class TagDataService {
   }
 
   async traziTag(uvjet) {
-    console.log('Tražim s: ' + uvjet);
-    return await http.get('/tag/trazi/'+uvjet);
+    console.log('Trazim s: ' + uvjet);
+    return await http.get('/tag/trazi/' + uvjet);
   }
 
   async post(tag){
-    //console.log(smjer);
+    
     const odgovor = await http.post('/tag',tag)
        .then(response => {
          return {ok:true, poruka: 'Unio tag'}; // return u odgovor

@@ -1,10 +1,12 @@
 ﻿using GalerijaWebApi.Data;
 using GalerijaWebApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 namespace GalerijaWebApi.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
+    [Authorize]
     public class LokacijaController : ControllerBase
     {
 
@@ -149,7 +151,9 @@ namespace GalerijaWebApi.Controllers
 
 
         }
-
+        /// <summary>
+        /// Dohvacanje po sifri
+        /// </summary>
         [HttpGet]
         [Route("{sifra:int}")]
         public IActionResult GetBySifra(int sifra)

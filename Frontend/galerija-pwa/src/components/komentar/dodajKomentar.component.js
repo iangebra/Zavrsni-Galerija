@@ -13,6 +13,10 @@ export default class DodajKomentar extends Component {
 
   constructor(props) {
     super(props);
+    const token = localStorage.getItem('Bearer');
+    if(token==null || token===''){
+      window.location.href='/';
+    }
     this.dodajKomentar = this.dodajKomentar.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.slike = this.dohvatiSlike();
@@ -31,7 +35,7 @@ export default class DodajKomentar extends Component {
     const odgovor = await KomentarDataService.post(slika);
     if(odgovor.ok){
       
-     // window.location.href='/komentar';
+    window.location.href='/komentar';
     }else{
       // pokaži grešku
       console.log(odgovor);

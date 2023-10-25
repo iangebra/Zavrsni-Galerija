@@ -14,6 +14,10 @@ import { Modal } from 'react-bootstrap';
 export default class Komentar extends Component {
   constructor(props) {
     super(props);
+    const token = localStorage.getItem('Bearer');
+    if(token==null || token===''){
+      window.location.href='/';
+    }
     this.dohvatiKomentar = this.dohvatiKomentar.bind(this);
 
     this.state = {

@@ -15,7 +15,7 @@ import { FaTrash } from 'react-icons/fa';
 import Cropper from "react-cropper";
 import "cropperjs/dist/cropper.css";
 import { Image } from "react-bootstrap";
-import KomentarDataService from "../../services/tag.service";
+
 
 
 import { AsyncTypeahead } from 'react-bootstrap-typeahead';
@@ -25,11 +25,18 @@ export default class PromjeniSlika extends Component {
 
   constructor(props) {
     super(props);
+    const token = localStorage.getItem('Bearer');
+    if(token==null || token===''){
+      window.location.href='/';
+    }
     this.slika = this.dohvatiSlika();
     this.promjeniSlika = this.promjeniSlika.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.albumi = this.dohvatiAlbumi();
     this.tags = this.dohvatiTags();
+    this.obrisiTag = this.obrisiTag.bind(this);
+    this.traziTag = this.traziTag.bind(this);
+    this.dodajTag = this.dodajTag.bind(this);
     this.komentari = this.dohvatiKomentar();
     this.lokacija = this.dohvatiLokacija();
     
@@ -136,6 +143,39 @@ export default class PromjeniSlika extends Component {
          console.log(e);
        });
    }
+
+   async traziTag( uvjet) {
+
+    await TagDataService.traziTag( uvjet)
+       .then(response => {
+         this.setState({
+          pronadeniTags: response.data
+         });
+ 
+        // console.log(response.data);
+       })
+       .catch(e => {
+         console.log(e);
+       });
+   }
+
+   async obrisiTag(slika, tag){
+    const odgovor = await SlikaDataService.obrisiTag(slika, tag);
+    if(odgovor.ok){
+     this.dohvatiTags();
+    }else{
+     //this.otvoriModal();
+    }
+   }
+
+   async dodajTag(slika, tag){
+    const odgovor = await SlikaDataService.dodajTag(slika, tag);
+    if(odgovor.ok){
+     this.dohvatiTags();
+    }else{
+    //this.otvoriModal();
+    }
+   }
    async dohvatiKomentar() {
     let href = window.location.href;
     let niz = href.split('/'); 
@@ -155,21 +195,7 @@ export default class PromjeniSlika extends Component {
 
      
 
-  handleSubmit(e) {
-    e.preventDefault();
-    const podaci = new FormData(e.target);
-    console.log(podaci.get('datum'));    
-    let datum = moment.utc(podaci.get('datum'));
-    console.log(datum);
-
-    this.promjeniSlika({
-      naslov: podaci.get('naslov'),
-      datum: datum,
-      sifraAlbum: this.state.sifraAlbum,
-      sifraLokacija: this.state.sifraLokacija
-    });
-    
-  }
+  
 
   _crop() {
     // image in dataUrl
@@ -235,17 +261,44 @@ if(odgovor.ok){
 
 }
 
+handleSubmit(e) {
+  e.preventDefault();
+  const podaci = new FormData(e.target);
+  console.log(podaci.get('datum'));    
+  let datum = moment.utc(podaci.get('datum'));
+  console.log(datum);
 
+  this.promjeniSlika({
+    naslov: podaci.get('naslov'),
+    datum: datum,
+    sifraAlbum: this.state.sifraAlbum,
+    sifraLokacija: this.state.sifraLokacija
+  });
+  
+}
 
   render() { 
     const { albumi} = this.state;
     const { lokacija} = this.state;
     const { slika} = this.state;
     const { tags} = this.state;
-    const { image} = this.state;    
-    const { slikaZaServer} = this.state;
+    const { pronadeniTags} = this.state;
+    const { image} = this.state;
+    
     const { trenutnaSlika} = this.state;  
-    const { komentari} = this.state;    
+    const { komentari} = this.state; 
+    
+    const obradiTrazenje = (uvjet) => {
+      this.traziTag( uvjet);
+    };
+
+    const odabraniTag = (tag) => {
+      //console.log(slika.sifra + ' - ' + tag[0].sifra);
+      if(tag.length>0){
+        this.dodajTag(slika.sifra, tag[0].sifra);
+      }
+     
+    };
 
     return (
     <Container>
@@ -370,7 +423,50 @@ if(odgovor.ok){
           
           </Form>
 
-
+          <Col key="2" sm={12} lg={6} md={6} className="tagSlika">
+          <Form.Group className="mb-3" controlId="uvjet">
+                <Form.Label>Traži tag</Form.Label>
+                
+          <AsyncTypeahead
+            className="autocomplete"
+            id="uvjet"
+            emptyLabel="Nema rezultata"
+            searchText="Tražim..."
+            labelKey={(tag) => `${tag.naziv}`}
+            minLength={3}
+            options={pronadeniTags}
+            onSearch={obradiTrazenje}
+            placeholder="dio naziva"
+            renderMenuItemChildren={(tag) => (
+              <>
+                <span>{tag.naziv} </span>
+              </>
+            )}
+            onChange={odabraniTag}
+          />
+          </Form.Group>
+          <Table striped bordered hover responsive>
+              <thead>
+                <tr>
+                  <th>Tag</th>
+                  <th>Akcija</th>
+                </tr>
+              </thead>
+              <tbody>
+              {tags && tags.map((tag,index) => (
+                
+                <tr key={index}>
+                  <td > {tag.naziv}</td>
+                  <td>
+                  <Button variant="danger"   onClick={() => this.obrisiTag(slika.sifra, tag.sifra)}><FaTrash /></Button>
+                    
+                  </td>
+                </tr>
+                ))
+              }
+              </tbody>
+            </Table>    
+          </Col>
       
     </Container>
     );

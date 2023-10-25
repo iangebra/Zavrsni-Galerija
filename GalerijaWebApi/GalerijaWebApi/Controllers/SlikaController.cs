@@ -1,6 +1,7 @@
 ﻿using GalerijaWebApi.Data;
 using GalerijaWebApi.Models;
 using GalerijaWebApi.Models.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +10,7 @@ namespace GalerijaWebApi.Controllers
 
     [ApiController]
     [Route("api/v1/[controller]")]
+    [Authorize]
     public class SlikaController : ControllerBase
     {
         private readonly GalerijaContext _context;
@@ -84,7 +86,9 @@ namespace GalerijaWebApi.Controllers
 
         }
 
-
+        /// <summary>
+        /// Dohvacanje po sifri
+        /// </summary>
         [HttpGet]
         [Route("{sifra:int}")]
         public IActionResult GetById(int sifra)
@@ -290,7 +294,6 @@ namespace GalerijaWebApi.Controllers
         /// <summary>
         /// Briše sliku iz baze
         /// </summary>
-
         [HttpDelete]
         [Route("{sifra:int}")]
         [Produces("application/json")]
@@ -545,7 +548,9 @@ namespace GalerijaWebApi.Controllers
 
         }
 
-
+        /// <summary>
+        /// Postavljanje slike na entitet slika
+        /// </summary>
         [HttpPut]
         [Route("postaviSliku/{sifra:int}")]
         public IActionResult PostaviSliku(int sifra, DodajSlikuDTO DodajSlikuDTO)

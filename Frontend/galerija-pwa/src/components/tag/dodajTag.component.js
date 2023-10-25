@@ -12,6 +12,10 @@ export default class DodajTag extends Component {
 
   constructor(props) {
     super(props);
+    const token = localStorage.getItem('Bearer');
+    if(token==null || token===''){
+      window.location.href='/';
+    }
     this.dodajTag = this.dodajTag.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }

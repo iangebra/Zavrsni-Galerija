@@ -7,6 +7,8 @@ C:\Users\Ivan\Documents\GitHub\Zavrsni-Galerija\GalerijaWebApi\GalerijaWebApi\ob
 C:\Users\Ivan\Documents\GitHub\Zavrsni-Galerija\GalerijaWebApi\GalerijaWebApi\obj\Release\net6.0\PubTmp\Out\GalerijaWebApi.pdb
 C:\Users\Ivan\Documents\GitHub\Zavrsni-Galerija\GalerijaWebApi\GalerijaWebApi\obj\Release\net6.0\PubTmp\Out\Azure.Core.dll
 C:\Users\Ivan\Documents\GitHub\Zavrsni-Galerija\GalerijaWebApi\GalerijaWebApi\obj\Release\net6.0\PubTmp\Out\Azure.Identity.dll
+C:\Users\Ivan\Documents\GitHub\Zavrsni-Galerija\GalerijaWebApi\GalerijaWebApi\obj\Release\net6.0\PubTmp\Out\BCrypt.Net-Next.dll
+C:\Users\Ivan\Documents\GitHub\Zavrsni-Galerija\GalerijaWebApi\GalerijaWebApi\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\Ivan\Documents\GitHub\Zavrsni-Galerija\GalerijaWebApi\GalerijaWebApi\obj\Release\net6.0\PubTmp\Out\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\Ivan\Documents\GitHub\Zavrsni-Galerija\GalerijaWebApi\GalerijaWebApi\obj\Release\net6.0\PubTmp\Out\Microsoft.Data.SqlClient.dll
 C:\Users\Ivan\Documents\GitHub\Zavrsni-Galerija\GalerijaWebApi\GalerijaWebApi\obj\Release\net6.0\PubTmp\Out\Microsoft.EntityFrameworkCore.dll

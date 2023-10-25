@@ -19,6 +19,10 @@ export default class Listaalbum extends Component {
 
   constructor(props) {
     super(props);
+    const token = localStorage.getItem('Bearer');
+    if(token==null || token===''){
+      window.location.href='/';
+    }
     
    
    

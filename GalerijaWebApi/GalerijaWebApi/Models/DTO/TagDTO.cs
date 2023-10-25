@@ -4,5 +4,7 @@
     {
         public int sifra { get; set; }
         public string? naziv { get; set; }
+
+
     }
 }

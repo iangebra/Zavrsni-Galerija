@@ -53,7 +53,7 @@ class SlikaDataService {
 
      async obrisiTag(slika, tag){
     
-      const odgovor = await http.delete('/slika/obrisiTag/' + slika + '/' + tag)
+      const odgovor = await http.delete('/slika/' + slika + '/obrisi/' + tag)
          .then(response => {
            return {ok:true, poruka: 'Obrisao uspješno'};
          })
@@ -67,7 +67,7 @@ class SlikaDataService {
 
        async dodajTag(slika, tag){
     
-        const odgovor = await http.post('/slika/dodajTag/' + slika + '/' + tag)
+        const odgovor = await http.post('/slika/' + slika + '/dodaj/' + tag)
            .then(response => {
              return {ok:true, poruka: 'Dodao uspješno'};
            })

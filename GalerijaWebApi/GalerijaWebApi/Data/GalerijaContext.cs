@@ -16,6 +16,7 @@ namespace GalerijaWebApi.Data
         public DbSet<Slika> Slika { get; set; }
         public DbSet<Tag> Tag { get; set; }
         public DbSet<Komentar> Komentar { get; set; }
+        public DbSet<Operater> Operater { get; set; }
         protected override void OnModelCreating(
            ModelBuilder modelBuilder)
         {

@@ -16,6 +16,10 @@ import Card from 'react-bootstrap/Card';
 export default class Slike extends Component {
   constructor(props) {
     super(props);
+    const token = localStorage.getItem('Bearer');
+    if(token==null || token===''){
+      window.location.href='/';
+    }
     this.dohvatiSlike = this.dohvatiSlike.bind(this);
 
     this.state = {

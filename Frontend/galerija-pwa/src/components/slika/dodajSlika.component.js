@@ -19,6 +19,10 @@ export default class DodajSlika extends Component {
 
   constructor(props) {
     super(props);
+   const token = localStorage.getItem('Bearer');
+    if(token==null || token===''){
+      window.location.href='/'; 
+    }
     this.dodajSlika = this.dodajSlika.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.dohvatiAlbumi = this.dohvatiAlbumi.bind(this);

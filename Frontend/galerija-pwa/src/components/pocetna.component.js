@@ -13,6 +13,8 @@ import { Modal } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 
 
+
+
 export default class Slike extends Component {
   constructor(props) {
     super(props);
@@ -61,6 +63,7 @@ export default class Slike extends Component {
 
     <Container>
      
+
      <Row>
       { slike && slike.map((p) => (
            

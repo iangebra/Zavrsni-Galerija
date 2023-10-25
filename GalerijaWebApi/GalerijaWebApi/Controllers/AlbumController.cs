@@ -1,6 +1,7 @@
 ﻿using GalerijaWebApi.Data;
 using GalerijaWebApi.Models;
 using GalerijaWebApi.Models.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Drawing;
@@ -9,6 +10,7 @@ namespace GalerijaWebApi.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
+    [Authorize]
     public class AlbumController : ControllerBase
     {
 
@@ -76,7 +78,9 @@ namespace GalerijaWebApi.Controllers
 
 
         }
-
+        /// <summary>
+        /// Dohvacanje po sifri
+        /// </summary>
         [HttpGet]
         [Route("{sifra:int}")]
         public IActionResult GetBySifra(int sifra)
@@ -107,7 +111,9 @@ namespace GalerijaWebApi.Controllers
         }
 
 
-
+        /// <summary>
+        /// Slike iz albuma
+        /// </summary>
         [HttpGet]
         [Route("{sifra:int}/slike")]
         public IActionResult GetSlike(int sifra)

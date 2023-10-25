@@ -3,6 +3,7 @@ using GalerijaWebApi.Models.DTO;
 using GalerijaWebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GalerijaWebApi.Controllers
 
@@ -10,6 +11,7 @@ namespace GalerijaWebApi.Controllers
 
     [ApiController]
     [Route("api/v1/[controller]")]
+    [Authorize]
     public class KomentarController : ControllerBase
     {
 
@@ -59,7 +61,9 @@ namespace GalerijaWebApi.Controllers
             return Ok(vrati);
 
         }
-
+        /// <summary>
+        /// Dohvacanje po sifri
+        /// </summary>
         [HttpGet]
         [Route("{sifra:int}")]
         public IActionResult GetBySifra(int sifra)

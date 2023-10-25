@@ -13,7 +13,10 @@ export default class promjeniLokaciju extends Component {
 
   constructor(props) {
     super(props);
-
+    const token = localStorage.getItem('Bearer');
+    if(token==null || token===''){
+      window.location.href='/';
+    }
    
     this.lokacija = this.dohvatiLokacija();
     this.promjeniLokaciju = this.promjeniLokaciju.bind(this);

@@ -14,6 +14,10 @@ export default class PromjeniTag extends Component {
 
   constructor(props) {
     super(props);
+    const token = localStorage.getItem('Bearer');
+    if(token==null || token===''){
+      window.location.href='/';
+    }
 
     this.tag = this.dohvatiTag();
     this.promjeniTag = this.promjeniTag.bind(this);

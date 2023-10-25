@@ -2,16 +2,15 @@
 using GalerijaWebApi.Models;
 using GalerijaWebApi.Models.DTO;
 using Microsoft.AspNetCore.Mvc;
-using GalerijaWebApi.Models.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
-
-
 namespace GalerijaWebApi.Controllers
 
 {
 
     [ApiController]
     [Route("api/v1/[controller]")]
+    [Authorize]
     public class TagController : ControllerBase
     {
 
@@ -59,6 +58,9 @@ namespace GalerijaWebApi.Controllers
 
         }
 
+        /// <summary>
+        /// Dohvacanje po sifri
+        /// </summary>
         [HttpGet]
         [Route("{sifra:int}")]
         public IActionResult GetBySifra(int sifra)
@@ -163,7 +165,51 @@ namespace GalerijaWebApi.Controllers
 
         }
 
-        
+        /// <summary>
+        /// Trazilica tagova
+        /// </summary>
+        [HttpGet]
+        [Route("trazi/{uvjet}")]
+        public IActionResult TraziTag(string uvjet)
+        {
+            // ovdje će ići dohvaćanje u bazi
+
+            if (uvjet == null || uvjet.Length < 3)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                var tags = _context.Tag
+                    .Include(p => p.Slike)
+                    .Where(p => p.naziv.Contains(uvjet))
+
+                    
+                    .ToList();
+                
+                List<TagDTO> vrati = new();
+
+                tags.ForEach(s => {
+                    var sdto = new TagDTO();
+                    // dodati u nuget automapper ili neki drugi i skužiti kako se s njim radi, sada ručno
+                    vrati.Add(new TagDTO
+                    {
+                        sifra = s.sifra,
+                        naziv = s.naziv
+                        
+                    });
+                });
+
+
+                return new JsonResult(vrati); //200
+
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable, e.Message); //204
+            }
+        }
 
         /// <summary>
         /// Brisanje tagova
