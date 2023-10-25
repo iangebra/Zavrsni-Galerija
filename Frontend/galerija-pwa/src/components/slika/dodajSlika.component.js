@@ -194,11 +194,7 @@ onChange = (e) => {
             </Form.Select>
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="datum">
-            <Form.Label>Datum</Form.Label>
-            <Form.Control type="date" name="datum" placeholder=""  />
-          </Form.Group>     
-
+         
                    <Row>
             <Col>
               <Link className="btn btn-danger gumb" to={`/slike`}>Odustani</Link>
