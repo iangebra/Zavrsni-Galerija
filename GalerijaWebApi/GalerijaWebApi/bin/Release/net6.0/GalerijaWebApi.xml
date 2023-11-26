@@ -9,7 +9,7 @@
             Lista albuma u bazi
             </summary>
         </member>
-        <member name="M:GalerijaWebApi.Controllers.AlbumController.Post(GalerijaWebApi.Models.Album)">
+        <member name="M:GalerijaWebApi.Controllers.AlbumController.Post(GalerijaWebApi.Models.DTO.AlbumDTO)">
             <summary>
             Dodavanje novog albuma
             </summary>

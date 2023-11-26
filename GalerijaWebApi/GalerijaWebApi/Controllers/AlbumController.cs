@@ -56,7 +56,7 @@ namespace GalerijaWebApi.Controllers
         /// Dodavanje novog albuma
         /// </summary>
         [HttpPost]
-        public IActionResult Post(Album album)
+        public IActionResult Post(AlbumDTO dto)
         {
             if (!ModelState.IsValid)
             {
@@ -65,19 +65,27 @@ namespace GalerijaWebApi.Controllers
 
             try
             {
-                _context.album.Add(album);
+                Album p = new Album()
+                {
+                    sifra = dto.sifra,
+                    naslov = dto.naslov,
+                    opis= dto.opis,
+                };
+
+                _context.album.Add(p);
                 _context.SaveChanges();
-                return StatusCode(StatusCodes.Status201Created, album);
+                dto.sifra = p.sifra;
+                return Ok(dto);
+
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status503ServiceUnavailable,
-                                   ex.Message);
+                return StatusCode(
+                    StatusCodes.Status503ServiceUnavailable, ex.Message);
             }
-
-
-
         }
+
+      
         /// <summary>
         /// Dohvacanje po sifri
         /// </summary>
